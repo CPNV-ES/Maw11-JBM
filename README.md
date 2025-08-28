@@ -60,7 +60,7 @@ How to deploy the application outside the dev environment.
 
 ## License
 
-* [Choose the license adapted to your project](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+* [MIT](/LICENSE)
 
 ## Contact
 
