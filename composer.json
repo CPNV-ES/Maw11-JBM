@@ -1,5 +1,7 @@
 {
-  "require": {},
+  "require": {
+    "php": "^8.4"
+  },
   "autoload": {
     "psr-4": {
       "Maw11Jbm\\": "app/"
@@ -7,5 +9,9 @@
   },
   "config": {
     "optimize-autoloader": true
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.87",
+    "phpstan/phpstan": "^2.1"
   }
 }
