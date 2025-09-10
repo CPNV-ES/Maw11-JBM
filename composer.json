@@ -1,9 +1,11 @@
 {
   "require": {},
-    "autoload": {
-        "psr-4": {
-            "Maw11Jbm\\": "src/"
-        }
+  "autoload": {
+    "psr-4": {
+      "Maw11Jbm\\": "app/"
     }
-    
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
 }
