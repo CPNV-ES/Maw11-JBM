@@ -1,8 +1,7 @@
 <?php
 
-namespace App\View;
+namespace Maw11Jbm\View;
 
 class Exercise
 {
-
 }
