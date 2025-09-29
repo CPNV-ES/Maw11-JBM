@@ -67,4 +67,3 @@ How to deploy the application outside the dev environment.
 * [bryan.heutschi@eduvaud.ch](mailto:bryan.heutschi@eduvaud.ch)
 * [joris.bailly@eduvaud.ch](mailto:joris.bailly@eduvaud.ch)
 * [maximilian.lopizzo@eduvaud.ch](mailto:maximilian.lopizzo@eduvaud.ch)
-* 
