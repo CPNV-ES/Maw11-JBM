@@ -1,0 +1,46 @@
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    list-style-type: none;
+}
+
+.card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #eee;
+    border-radius: .4rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+li {
+    width: 70%;
+}
+
+.button {
+    background-color: #9b4dca;
+    border: 0.1rem solid #9b4dca;
+    border-top-color: rgb(155, 77, 202);
+    border-right-color: rgb(155, 77, 202);
+    border-bottom-color: rgb(155, 77, 202);
+    border-left-color: rgb(155, 77, 202);
+    border-radius: .4rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    height: 3.8rem;
+    letter-spacing: .1rem;
+    line-height: 3.8rem;
+    padding: 0 3.0rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
