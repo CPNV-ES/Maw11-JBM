@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace Maw11Jbm\Models;
 
 class Exercise
 {
-
 }
