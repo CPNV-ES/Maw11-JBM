@@ -13,5 +13,9 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.87",
     "phpstan/phpstan": "^2.1"
+  },
+  "scripts": {
+    "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
+    "php-fix": "vendor/bin/php-cs-fixer fix"
   }
 }
