@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/Exercises.css">
 <ul>
     <li>
         <div class="column card">
