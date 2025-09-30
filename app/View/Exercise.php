@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/index.css">
 <div class="container">
 
 <h1>Your take</h1>
