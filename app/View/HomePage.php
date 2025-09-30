@@ -1,5 +1,3 @@
-
-
 <link rel="stylesheet" href="/css/HomePage.css">
 <div class="homepage-container">
     <header class="header">
