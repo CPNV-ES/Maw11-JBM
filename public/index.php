@@ -1,5 +1,5 @@
 <?php
-define('BASE_DIR', dirname( __FILE__ ).'/..');
+define('BASE_DIR', __DIR__.'/..');
 define('SOURCE_DIR', BASE_DIR.'/app');
 
 include SOURCE_DIR.'/View/Exercises.php'; ?>
