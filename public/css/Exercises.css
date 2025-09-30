@@ -25,10 +25,6 @@ li {
 .button {
     background-color: #9b4dca;
     border: 0.1rem solid #9b4dca;
-    border-top-color: rgb(155, 77, 202);
-    border-right-color: rgb(155, 77, 202);
-    border-bottom-color: rgb(155, 77, 202);
-    border-left-color: rgb(155, 77, 202);
     border-radius: .4rem;
     color: #fff;
     cursor: pointer;
