@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/index.css">
-<div class="container">
+<div class="container main">
 
 <h1>Your take</h1>
 <p>If you'd like to come back later to finish, simply submit it with blanks</p>
