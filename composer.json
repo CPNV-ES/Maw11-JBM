@@ -4,8 +4,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Maw11Jbm\\": "app/"
-    }
+      "Maw11Jbm\\": "app/",
+      "core\\": "core/"
+    },
+    "files": [
+      "core/View.php"
+    ]
   },
   "config": {
     "optimize-autoloader": true
