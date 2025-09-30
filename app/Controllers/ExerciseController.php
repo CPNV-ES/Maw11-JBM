@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Controllers;
+namespace Maw11Jbm\Controllers;
+
 class ExerciseController
 {
-
 }
