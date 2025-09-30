@@ -13,6 +13,6 @@ class ExerciseController
             return 'Invalid exercise ID';
         }
 
-        return new View()->view('Exercise.php');
+        return new View()->view('exercise.php');
     }
 }

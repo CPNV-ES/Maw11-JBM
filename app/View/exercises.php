@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/Exercises.css">
+<link rel="stylesheet" href="/css/exercises.css">
 <link rel="stylesheet" href="/css/index.css">
 <header class="heading answering">
     <section class="container">

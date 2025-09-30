@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/HomePage.css">
+<link rel="stylesheet" href="/css/home-page.css">
 <div class="homepage-container">
     <header class="header">
         <img alt="Looper logo" src="/assets/logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png">

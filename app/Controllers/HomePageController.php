@@ -8,6 +8,6 @@ class HomePageController
 {
     public function index(): false|string
     {
-        return new View()->view('HomePage.php');
+        return new View()->view('home-page.php');
     }
 }

@@ -8,7 +8,7 @@ class ExercisesController
 {
     public function showAllExercises(): false|string
     {
-       return new View()->view('Exercises.php');
+       return new View()->view('exercises.php');
     }
 
 }
