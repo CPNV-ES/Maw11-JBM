@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/HomePage.css">
 <div class="homepage-container">
     <header class="header">
-        <div class="icon">LogoAfaire</div>
+        <img src="/assets/logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png">
         <h1 class="title">Exercise Looper</h1>
     </header>
     
