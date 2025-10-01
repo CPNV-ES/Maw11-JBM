@@ -24,8 +24,17 @@ App for creating exercises for students
 
 ### On dev environment
 
-How to get dependencies and build?
-How to run the tests?
+To check error with phpstan
+
+```shell
+    composer phpstan
+```
+
+To use the linter php cs fixer
+
+```shell
+    composer php-fix
+```
 
 ### On integration environment
 
@@ -36,17 +45,36 @@ How to deploy the application outside the dev environment.
 * Tip: try the tree bash command
 
 ```shell
-├───Docs
-├───Shopping                                        //classes and packages
-│   ├───bin                                         //the binary to deploy on the end-user environment
-│   │   └───Debug
-│   └───obj
-│       └───Debug                                   
-└───TestShopping                                    //test classes
-    ├───bin
-    │   └───Debug
-    └───obj
-        └───Debug
+├── app                                                                                                                                                                               
+│ ├── Controllers                                                                                                                                                                   
+│ │ ├── ExerciseController.php                                                                                                                                                    
+│ │ ├── ExercisesController.php                                                                                                                                                   
+│ │ ├── HomePageController.php                                                                                                                                                    
+│ │ └── UserController.php                                                                                                                                                        
+│ ├── Models                                                                                                                                                                        
+│ │ └── Exercise.php                                                                                                                                                              
+│ ├── routes.php                                                                                                                                                                    
+│ └── View                                                                                                                                                                          
+│ ├── exercise.php                                                                                                                                                              
+│ ├── exercises.php                                                                                                                                                             
+│ ├── home-page.php                                                                                                                                                             
+│ └── user.php
+├── composer.json
+├── composer.lock
+├── core
+│ ├── Router.php
+│ └── View.php
+├── LICENSE
+├── phpstan.neon
+├── public
+│ ├── assets
+│ │ └── logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png
+│ ├── css
+│ │ ├── exercises.css
+│ │ ├── home-page.css
+│ │ └── index.css
+│ └── index.php
+└── README.md
 ```
 
 ## Collaborate
