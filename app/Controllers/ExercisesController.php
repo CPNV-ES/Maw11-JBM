@@ -8,6 +8,6 @@ class ExercisesController
 {
     public function showAllExercises(): false|string
     {
-        return view('exercises');
+        return view('exercises.php');
     }
 }
