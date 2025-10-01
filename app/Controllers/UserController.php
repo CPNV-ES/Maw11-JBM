@@ -10,7 +10,7 @@ class UserController
     }
 
     /**
-     * @param array<string> $params
+     * @param  array<string> $params
      * @return string
      */
     public function show(array $params): string

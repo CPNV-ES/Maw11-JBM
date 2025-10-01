@@ -18,4 +18,3 @@ try {
 
     return 'Internal Server Error: ' . $e->getMessage();
 }
-
