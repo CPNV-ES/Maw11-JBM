@@ -2,13 +2,12 @@
 
 namespace Maw11Jbm\Controllers;
 
-use core\view;
+use function core\view;
 
 class ExercisesController
 {
     public function showAllExercises(): false|string
     {
-       return new View()->view('exercises.php');
+        return view('exercises');
     }
-
 }

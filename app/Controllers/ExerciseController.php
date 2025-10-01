@@ -2,7 +2,7 @@
 
 namespace Maw11Jbm\Controllers;
 
-use core\View;
+use function core\view;
 
 class ExerciseController
 {
@@ -13,6 +13,6 @@ class ExerciseController
             return 'Invalid exercise ID';
         }
 
-        return new View()->view('exercise.php');
+        return view('exercise.php');
     }
 }

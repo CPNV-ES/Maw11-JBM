@@ -2,12 +2,12 @@
 
 namespace Maw11Jbm\Controllers;
 
-use core\View;
+use function core\view;
 
 class HomePageController
 {
     public function index(): false|string
     {
-        return new View()->view('home-page.php');
+        return view('home-page');
     }
 }
