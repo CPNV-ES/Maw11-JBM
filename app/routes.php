@@ -1,10 +1,9 @@
 <?php
 
 use core\Router;
+use Maw11Jbm\Controllers\ExerciseController;
 use Maw11Jbm\Controllers\ExercisesController;
 use Maw11Jbm\Controllers\HomePageController;
-use Maw11Jbm\Controllers\ExerciseController;
-use Maw11Jbm\Controllers\UserController;
 
 /** @var Router $router */
 
