@@ -1,7 +1,7 @@
 {
   "require": {
     "php": "^8.4",
-    "ext-sqlite3": "*"
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {
