@@ -9,7 +9,7 @@ class ExerciseController
 
     public static function index(): false|string
     {
-        return view('index.php');
+        return view('exercises/index.php');
     }
     
     public function show(array $params): false|string
