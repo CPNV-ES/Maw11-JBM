@@ -7,7 +7,7 @@ use function core\view;
 class ExerciseController
 {
 
-    public static function index(): false|string
+    public function index(): false|string
     {
         return view('exercises/index.php');
     }
@@ -22,7 +22,7 @@ class ExerciseController
         return view('show.php');
     }
 
-    public static function indexAnswering(): false|string
+    public function indexAnswering(): false|string
     {
         return view('exercises/index_answering.php');
     }
