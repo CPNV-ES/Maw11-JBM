@@ -4,7 +4,7 @@ namespace core;
 
 use PDO;
 
-class DbConnection
+class Database
 {
     private PDO $db;
 
