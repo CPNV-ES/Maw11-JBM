@@ -19,8 +19,7 @@ class ExerciseController
         if ($exerciseId === false) {
             return 'Invalid exercise ID';
         }
-
-        return view('exercise.php');
+        return view('exercises/show.php');
     }
 
     public function indexAnswering(): false|string
