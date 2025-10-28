@@ -5,14 +5,17 @@
 $icon = $icon ?? 'close';
 $color = $color ?? 'primary';
 $classes = $classes ?? '';
+$label = $label ?? '';
+$hasLabel = trim((string) $label) !== '';
 
 // dinamic css classes
 $colorClass = "btn-{$color}";
 
 ?>
 <button type="button" 
-    class="btn btn-close btn-small <?= $colorClass ?> <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>">
-
+    class="btn btn-close btn-small <?= $colorClass ?> <?= $hasLabel ? 'btn-context-text' : '' ?> <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
+    <?= $hasLabel ? 'aria-label="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>
+    <?= $hasLabel ? 'data-context-text="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>>
     <?php if ($icon === 'close'): ?>
         <!-- Close icon -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
