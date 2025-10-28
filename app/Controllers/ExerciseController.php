@@ -20,6 +20,6 @@ class ExerciseController
             return 'Invalid exercise ID';
         }
 
-        return view('show.php');
+        return view('exercise.php');
     }
 }
