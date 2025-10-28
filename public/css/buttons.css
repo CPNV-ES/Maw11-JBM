@@ -1,0 +1,24 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.btn-default {
+    background: transparent;
+    color: #606c76;
+}
+
+.btn-small {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+}
