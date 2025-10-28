@@ -53,6 +53,6 @@ class Database
     }
 
     function getAll($tableName){
-        return $this->db->query("SELECT * FROM $tableName");
+        return $this->db->query("SELECT * FROM $tableName")->fetchAll();
     }
 }
