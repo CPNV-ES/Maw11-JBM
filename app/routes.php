@@ -2,12 +2,11 @@
 
 use core\Router;
 use Maw11Jbm\Controllers\ExerciseController;
-use Maw11Jbm\Controllers\ExercisesController;
-use Maw11Jbm\Controllers\HomePageController;
+use Maw11Jbm\Controllers\HomeController;
 
 /** @var Router $router */
 
-$router->addRoute('GET', '/', [HomePageController::class, 'index']);
-
-$router->addRoute('GET', '/exercises', [ExercisesController::class, 'showAllExercises']);
+$router->addRoute('GET', '/', [HomeController::class, 'index']);
+$router->addRoute('GET', '/exercises', [ExerciseController::class, 'index']);
+$router->addRoute('GET', '/exercises/answering', [ExerciseController::class, 'indexAnswering']);
 $router->addRoute('GET', '/exercises/{id}', [ExerciseController::class, 'show']);
