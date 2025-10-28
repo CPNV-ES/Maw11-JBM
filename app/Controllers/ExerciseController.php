@@ -22,4 +22,9 @@ class ExerciseController
 
         return view('exercise.php');
     }
+
+    public function indexAnswering(): false|string
+    {
+        return view('exercises/index_answering.php');
+    }
 }
