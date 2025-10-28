@@ -4,14 +4,9 @@ namespace core;
 
 class View
 {
-    public function view(string $viewFile, array $data = []): string
+    public function view(string $pathFile, array $data = []): string
     {
-        $view = dirname(__DIR__) . '/app/View/'. $viewFile;
-
-        if (!is_file($view)) {
-            http_response_code(500);
-            return 'View not found';
-        }
+        $view = dirname(__DIR__) . '/app/View/'. $pathFile;
 
         if (!empty($data)) {
             extract($data, EXTR_SKIP);
@@ -23,7 +18,7 @@ class View
     }
 }
 
-function  view(string $file, array $data = []): string
+function  view(string $pathFile, array $data = []): string
 {
-    return new View()->view($file, $data);
+    return new View()->view($pathFile, $data);
 }

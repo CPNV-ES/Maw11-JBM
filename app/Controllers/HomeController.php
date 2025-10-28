@@ -8,6 +8,6 @@ class HomeController
 {
     public function index(): false|string
     {
-        return view('home-page.php');
+        return view('home.php');
     }
 }
