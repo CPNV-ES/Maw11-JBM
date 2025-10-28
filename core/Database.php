@@ -13,7 +13,7 @@ class Database
     function __construct()
     {
         $this->db = new PDO('sqlite:looper.db');
-        $this->createTable('exercises',p
+        $this->createTable('exercises',
             ['ID INT PRIMARY KEY NOT NULL',
                 'TITLE TEXT NOT NULL',
                 'STATUS TEXT NOT NULL']);
@@ -42,8 +42,14 @@ class Database
         $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
     }
 
-    function createItem($item){
-        return $this->db->query("INSERT INTO $tableName");
+    function createItem($tablename, $item){
+        foreach($item as $key => $value){
+            $columns[] = $key;
+            $values[] = "'$value'";
+        }
+        $columnsString = implode(", ", $columns);
+        $valuesString = implode(", ", $values);
+        return $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
     }
 
     function getAll($tableName){

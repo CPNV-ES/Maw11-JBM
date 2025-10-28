@@ -16,7 +16,6 @@ $router = new Router();
 include APP_DIR . '/routes.php';
 
 try {
-    $db->connect();
     $router->resolve();
 } catch (Exception $e) {
     http_response_code(500);
