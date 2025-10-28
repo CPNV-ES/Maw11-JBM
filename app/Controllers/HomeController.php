@@ -4,7 +4,7 @@ namespace Maw11Jbm\Controllers;
 
 use function core\view;
 
-class HomePageController
+class HomeController
 {
     public function index(): false|string
     {
