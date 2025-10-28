@@ -4,14 +4,16 @@
 // default value if not set
 $icon = $icon ?? 'close';
 $color = $color ?? 'primary';
+$classes = $classes ?? '';
 
 // dinamic css classes
 $colorClass = "btn-{$color}";
 
 ?>
 <button type="button" 
-    class="btn btn-default btn-small"
+    class="btn btn-default btn-small <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
         <?= $colorClass ?>
+        <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
     >
 
     <?php if ($icon === 'close'): ?>
