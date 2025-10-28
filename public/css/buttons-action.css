@@ -1,0 +1,58 @@
+/* styles for the reusableaction buttons */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 0.4rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-close {
+    background: transparent;
+    color: #606c76;
+}
+
+/* size */
+.btn-small {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+}
+
+/* colors */
+.btn-primary {
+    color: #9b4dca;
+}
+
+.btn-primary:hover {
+    background: rgba(155, 77, 202, 0.1);
+}
+
+.btn-secondary {
+    color: #606c76;
+}
+
+.btn-secondary:hover {
+    background: rgba(96, 108, 118, 0.1);
+}
+
+.btn-danger {
+    color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background: rgba(231, 76, 60, 0.1);
+}
+
+/* states */
+.btn-close:hover {
+    transform: scale(1.05);
+}
+
+.btn-close:active {
+    transform: scale(0.95);
+}
