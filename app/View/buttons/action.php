@@ -11,10 +11,7 @@ $colorClass = "btn-{$color}";
 
 ?>
 <button type="button" 
-    class="btn btn-default btn-small <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
-        <?= $colorClass ?>
-        <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
-    >
+    class="btn btn-default btn-small <?= $colorClass ?> <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>">
 
     <?php if ($icon === 'close'): ?>
         <!-- Close icon -->
