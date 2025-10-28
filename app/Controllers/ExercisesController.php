@@ -10,7 +10,7 @@ class ExercisesController
 {
     public function showAllExercises(): false|string
     {
-        $data = new Exercise()->getExercises();
+        $data = Database::getInstance()->getAll('exercises');
         return view('exercises.php', $data);
     }
 }
