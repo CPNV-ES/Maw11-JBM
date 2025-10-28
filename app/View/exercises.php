@@ -8,6 +8,7 @@
 </header>
 <div class="container main">
 <ul>
+    <?php if(isset($data)) : ?>
     <?php foreach ($data as $exercise): ?>
     <li>
         <div class="column card">
@@ -16,5 +17,6 @@
         </div>
     </li>
     <?php endforeach; ?>
+    <?php endif; ?>
 </ul>
 </div>
