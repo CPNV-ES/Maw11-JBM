@@ -14,7 +14,7 @@ class Router
         $this->routes[$method][$pattern] = $callback;
     }
 
-    public function resolve(): void
+    public function resolve(Database $db): void
     {
     $method = $_SERVER['REQUEST_METHOD'];
     $path = $_SERVER['REQUEST_URI'] ?? '/';
