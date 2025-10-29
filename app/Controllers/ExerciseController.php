@@ -27,4 +27,14 @@ class ExerciseController
         $data = Exercise::getExercises();
         return view('exercises/index_answering.php', $data);
     }
+
+    public function create(): false|string
+    {
+        return view('exercises/create.php');
+    }
+
+    public function store(): false|string
+    {
+        return view('exercises/create.php');
+    }
 }
