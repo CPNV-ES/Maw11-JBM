@@ -13,7 +13,7 @@
                 <li>
                     <div class="column card">
                         <div class="title"><?= $exercise['TITLE'] ?></div>
-                        <a class="button" href=exercise/<?= $exercise['ID'] ?>>Take it</a>
+                        <a class="button" href=<?= $exercise['ID'] ?>>Take it</a>
                     </div>
                 </li>
             <?php endforeach; ?>
