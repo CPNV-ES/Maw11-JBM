@@ -20,8 +20,20 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <a title="Manage fields" href="/exercises/133/fields"><i class="fa fa-edit"></i></a>
-                        <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="/exercises/31"><i class="fa fa-trash"></i></a>
+                        <?php 
+                            $icon = 'edit'; 
+                            $href = '/exercises'; 
+                            $label = 'test'; 
+                            $classes = 'test'; 
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
+                        <?php 
+                            $icon = 'delete'; 
+                            $href = '/exercises'; 
+                            $label = 'test'; 
+                            $classes = 'test'; 
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -41,8 +53,20 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <a title="Show results" href="/exercises/129/results"><i class="fa fa-chart-bar"></i></a>
-                        <a title="Close" rel="nofollow" data-method="put" href="/exercises/129?exercise%5Bstatus%5D=closed"><i class="fa fa-minus-circle"></i></a>
+                        <?php 
+                            $icon = 'stats'; 
+                            $href = '/exercises'; 
+                            $label = 'test'; 
+                            $classes = 'test'; 
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
+                        <?php 
+                            $icon = 'close'; 
+                            $href = '/exercises'; 
+                            $label = 'test'; 
+                            $classes = 'test'; 
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -62,8 +86,20 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <a title="Show results" href="/exercises/22/results"><i class="fa fa-chart-bar"></i></a>
-                        <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="/exercises/22"><i class="fa fa-trash"></i></a>
+                        <?php 
+                            $icon = 'stats'; 
+                            $href = '/exercises'; 
+                            $label = 'test'; 
+                            $classes = ''; 
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
+                        <?php 
+                            $icon = 'delete'; 
+                            $href = '/exercises'; 
+                            $label = 'test';
+                            $classes = 'test'; 
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
