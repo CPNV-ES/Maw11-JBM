@@ -1,4 +1,4 @@
-/* styles for the reusableaction buttons */
+/* styles for the reusable action buttons */
 
 .btn {
     display: inline-flex;
@@ -58,7 +58,7 @@
 }
 
 /* context text */
-.btn-context-text    {
+.btn-context-text {
     position: relative;
 }
 
