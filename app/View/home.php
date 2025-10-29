@@ -1,5 +1,5 @@
 <?php $title = 'Home';
-$isHome      = true ?>
+$isHome = true ?>
 <div class="homepage-container">
     <main class="content">
         <div class="buttons-container">
