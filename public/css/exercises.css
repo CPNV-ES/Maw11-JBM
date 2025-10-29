@@ -7,7 +7,7 @@ ul {
     list-style-type: none;
 }
 
-.card{
+.card {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -39,4 +39,44 @@ li {
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
+}
+.column {
+    margin: 0 auto;
+}
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    border: 0;
+}
+
+tr {
+    border-bottom: 0.1rem solid #e1e1e1;
+}
+
+td:first-child,
+th:first-child {
+    padding-left: 0;
+}
+
+td:last-child,
+th:last-child {
+    padding-right: 0;
+}
+a {
+    color: #9b4dca;
+    text-decoration: none;
+}
+a:focus, a:hover {
+    color: #606c76;
 }

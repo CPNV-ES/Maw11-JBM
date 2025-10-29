@@ -4,10 +4,10 @@ namespace Maw11Jbm\Controllers;
 
 use function core\view;
 
-class HomePageController
+class HomeController
 {
     public function index(): false|string
     {
-        return view('home-page.php');
+        return view('home.php');
     }
 }
