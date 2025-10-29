@@ -8,7 +8,7 @@ $classes = $classes ?? '';
 $label = $label ?? '';
 $hasLabel = trim((string) $label) !== '';
 
-// dinamic css classes
+// dynamic css classes
 $colorClass = "btn-{$color}";
 
 ?>
