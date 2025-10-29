@@ -7,14 +7,16 @@
     </section>
 </header>
 <div class="container main">
-<ul>
-    <?php foreach (['Bash', 'Python', 'Javascript','PHP','GIT','C++','C#'] as $title): ?>
-    <li>
-        <div class="column card">
-            <div class="title"><?= $title ?></div>
-            <a class="button" href="/exercises/1">Take it</a>
-        </div>
-    </li>
-    <?php endforeach; ?>
-</ul>
+    <ul>
+        <?php if(isset($data)) : ?>
+            <?php foreach ($data as $exercise): ?>
+                <li>
+                    <div class="column card">
+                        <div class="title"><?= $exercise['TITLE'] ?></div>
+                        <a class="button" href=<?= $exercise['ID'] ?>>Take it</a>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
 </div>

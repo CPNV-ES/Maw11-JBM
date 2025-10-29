@@ -6,6 +6,7 @@ use Maw11Jbm\Controllers\HomeController;
 
 /** @var Router $router */
 
+
 $router->addRoute('GET', '/', [HomeController::class, 'index']);
 $router->addRoute('GET', '/exercises', [ExerciseController::class, 'index']);
 $router->addRoute('GET', '/exercises/answering', [ExerciseController::class, 'indexAnswering']);
