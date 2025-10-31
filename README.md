@@ -20,6 +20,11 @@ App for creating exercises for students
     composer install
 ```
 
+### Running the application
+```shell
+    php -S localhost:8000 -t public/
+```
+
 ## Deployment
 
 ### On dev environment
@@ -49,15 +54,16 @@ How to deploy the application outside the dev environment.
 │ ├── Controllers                                                                                                                                                                   
 │ │ ├── ExerciseController.php                                                                                                                                                    
 │ │ ├── ExercisesController.php                                                                                                                                                   
-│ │ ├── HomePageController.php                                                                                                                                                    
+│ │ ├── HomeController.php                                                                                                                                                    
 │ │ └── UserController.php                                                                                                                                                        
 │ ├── Models                                                                                                                                                                        
 │ │ └── Exercise.php                                                                                                                                                              
 │ ├── routes.php                                                                                                                                                                    
-│ └── View                                                                                                                                                                          
-│ ├── exercise.php                                                                                                                                                              
-│ ├── exercises.php                                                                                                                                                             
-│ ├── home-page.php                                                                                                                                                             
+│ └── View
+│   └── exercises                                                                                                                                                                          
+│   ├── show.php                                                                                                                                                              
+│   ├── index.php                                                                                                                                                             
+│ ├── home.php                                                                                                                                                             
 │ └── user.php
 ├── composer.json
 ├── composer.lock
