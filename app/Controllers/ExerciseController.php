@@ -27,4 +27,9 @@ class ExerciseController
         $data = Exercise::getExercises();
         return view('exercises/index_answering.php', $data);
     }
+
+    public function delete(array $params): false|string
+    {
+        
+    }
 }
