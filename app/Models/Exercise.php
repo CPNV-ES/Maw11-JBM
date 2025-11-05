@@ -18,7 +18,7 @@ class Exercise
 
     public static function getExercises() :array
     {
-        return Database::getInstance()->getAll(self::$tableName);
+        return Database::getInstance()->getAll('exercises');
     }
 
     public static function create(array $item) : void
