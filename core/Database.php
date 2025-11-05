@@ -42,8 +42,9 @@ class Database
         $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
     }
 
-    function createItem($tablename, $item){
-        foreach($item as $key => $value){
+    function createItem($tablename, $item)
+    {
+        foreach ($item as $key => $value) {
             $columns[] = $key;
             $values[] = "'$value'";
         }
@@ -53,20 +54,22 @@ class Database
     }
 
 
-    function editItem($tableName, $item, $id){
+    function editItem($tableName, $item, $id)
+    {
         $columns = [];
         $values = [];
-        foreach($item as $key => $value){
+        foreach ($item as $key => $value) {
             $columns[] = "$key = '$value'";
         }
     }
 
-    function getAll($tableName, $column = null, $condition = null){
-        if($column != null){
+    function getAll($tableName, $column = null, $condition = null)
+    {
+        if ($column != null) {
             return $this->db->query(
                 "SELECT * FROM $tableName 
                     WHERE $column = '$condition'")->fetchAll();
-        }else {
+        } else {
             return $this->db->query("SELECT * FROM $tableName")->fetchAll();
 
         }
