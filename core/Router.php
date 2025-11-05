@@ -17,6 +17,11 @@ class Router
     public function resolve(): void
     {
     $method = $_SERVER['REQUEST_METHOD'];
+    
+    if ($method === 'POST' && isset($_POST['_method'])) {
+        $method = strtoupper($_POST['_method']);
+    }
+    
     $path = $_SERVER['REQUEST_URI'] ?? '/';
     $path = explode('?', $path)[0];
 
@@ -31,9 +36,10 @@ class Router
             if (is_array($callback)) {
                 [$class, $method] = $callback;
                 echo new $class()->$method($params);
+            } else {
+                echo $callback($params);
             }
-
-            echo $callback($params);
+            return;
         }
     }
 
