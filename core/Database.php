@@ -63,6 +63,12 @@ class Database
         }
     }
 
+    function deleteItem($tableName, $id)
+    {
+        $this->db->query("DELETE FROM $tableName WHERE id = '$id'");
+
+    }
+
     function getAll($tableName, $column = null, $condition = null)
     {
         if ($column != null) {
