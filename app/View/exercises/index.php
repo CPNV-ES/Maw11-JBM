@@ -22,16 +22,16 @@
                     <td>
                         <?php 
                             $icon = 'edit'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
                             $icon = 'delete'; 
-                            $href = '/exercises'; 
-                            $label = 'test'; 
-                            $classes = 'test'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
+                            $label = 'delete'; 
+                            $classes = 'delete'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
@@ -55,14 +55,14 @@
                     <td>
                         <?php 
                             $icon = 'stats'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
                             $icon = 'close'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
@@ -88,16 +88,16 @@
                     <td>
                         <?php 
                             $icon = 'stats'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = ''; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
                             $icon = 'delete'; 
-                            $href = '/exercises'; 
-                            $label = 'test';
-                            $classes = 'test'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
+                            $label = 'delete';
+                            $classes = 'delete'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
