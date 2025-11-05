@@ -14,13 +14,18 @@ class Exercise
 
     public function __construct(string $title, string $status)
     {
-        $this->$title  = $title;
-        $this->$status = $status;
+        $this->title = $title;
+        $this->status = $status;
     }
 
     public static function getExercises(): array
     {
         return Database::getInstance()->getAll('exercises');
+    }
+
+    public static function create(array $item) : void
+    {
+        Database::getInstance()->createItem('exercises', $item);
     }
 
     public static function all(): array
