@@ -16,9 +16,9 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($buildings ?? []) as $key => $value): ?>
+            <?php foreach (($buildings ?? []) as $building): ?>
                 <tr>
-                    <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($building['title'] ?? '') ?></td>
                     <td>
                         <?php 
                             $icon = 'edit'; 
