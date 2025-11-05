@@ -12,8 +12,8 @@
             <?php foreach ($data as $exercise): ?>
                 <li>
                     <div class="column card">
-                        <div class="title"><?= $exercise['TITLE'] ?></div>
-                        <a class="button" href=<?= $exercise['ID'] ?>>Take it</a>
+                        <div class="title"><?= $exercise['title'] ?></div>
+                        <a class="button" href=<?= $exercise['id'] ?>>Take it</a>
                     </div>
                 </li>
             <?php endforeach; ?>
