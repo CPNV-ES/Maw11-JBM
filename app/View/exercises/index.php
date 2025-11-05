@@ -22,16 +22,18 @@
                     <td>
                         <?php 
                             $icon = 'edit'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
                             $icon = 'delete'; 
-                            $href = '/exercises'; 
-                            $label = 'test'; 
-                            $classes = 'test'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
+                            $label = 'delete'; 
+                            $classes = 'delete'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
@@ -55,16 +57,18 @@
                     <td>
                         <?php 
                             $icon = 'stats'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
-                            $classes = 'test'; 
+                            $classes = 'test';
+                            $method = 'POST'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
                             $icon = 'close'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
+                            $method = 'POST'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
@@ -88,16 +92,18 @@
                     <td>
                         <?php 
                             $icon = 'stats'; 
-                            $href = '/exercises'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = ''; 
+                            $method = ''; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
                             $icon = 'delete'; 
-                            $href = '/exercises'; 
-                            $label = 'test';
-                            $classes = 'test'; 
+                            $href = '/exercises/' . ($value['id'] ?? ''); 
+                            $label = 'delete';
+                            $classes = 'delete'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
