@@ -8,11 +8,11 @@ class Database
 {
     private static null|Database $instance = null;
 
-    private static PDO $db;
+    private PDO $db;
 
     function __construct()
     {
-        self::$db = new PDO('sqlite:looper.db');
+        $this->db = new PDO('sqlite:looper.db');
         $this->createTable('exercises',
             ['id INT PRIMARY KEY NOT NULL',
                 'title TEXT NOT NULL',
@@ -29,7 +29,7 @@ class Database
 
     public function getDb(): PDO
     {
-        return self::$db;
+        return $this->db;
     }
 
     function createTable(string $tableName, array $columns)
@@ -39,7 +39,7 @@ class Database
             $columnsSql[] = "$column";
         }
         $columnsString = implode(",\n", $columnsSql);
-        self::$db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
+        $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
     }
 
     function createItem($tablename, $item){
@@ -49,7 +49,7 @@ class Database
         }
         $columnsString = implode(", ", $columns);
         $valuesString = implode(", ", $values);
-        self::$db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+        $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
     }
 
 
@@ -63,11 +63,11 @@ class Database
 
     function getAll($tableName, $column = null, $condition = null){
         if($column != null){
-            return self::$db->query(
+            return $this->db->query(
                 "SELECT * FROM $tableName 
                     WHERE $column = '$condition'")->fetchAll();
         }else {
-            return self::$db->query("SELECT * FROM $tableName")->fetchAll();
+            return $this->db->query("SELECT * FROM $tableName")->fetchAll();
 
         }
     }
