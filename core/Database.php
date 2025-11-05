@@ -10,13 +10,13 @@ class Database
 
     private PDO $db;
 
-    function __construct()
+    public function __construct()
     {
         $this->db = new PDO('sqlite:looper.db');
         $this->createTable('exercises',
-            ['ID INT PRIMARY KEY NOT NULL',
-                'TITLE TEXT NOT NULL',
-                'STATUS TEXT NOT NULL']);
+            ['id INTEGER PRIMARY KEY AUTOINCREMENT',
+                'title TEXT NOT NULL',
+                'status TEXT NOT NULL']);
     }
 
     public static function getInstance(): Database
@@ -32,27 +32,29 @@ class Database
         return $this->db;
     }
 
-    function createTable(string $tableName, array $columns)
+    public function createTable(string $tableName, array $columns): void
     {
         $columnsSql = [];
         foreach ($columns as $index => $column) {
-            $columnsSql[] = "$column";
+            $columnsSql[] = (string)$column;
         }
         $columnsString = implode(",\n", $columnsSql);
         $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
     }
 
-    function createItem($tablename, $item){
+    public function createItem($tablename, $item): void
+    {
         foreach($item as $key => $value){
             $columns[] = $key;
             $values[] = "'$value'";
         }
         $columnsString = implode(", ", $columns);
         $valuesString = implode(", ", $values);
-        return $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+        $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
     }
 
-    function getAll($tableName){
+    public function getAll($tableName): array
+    {
         return $this->db->query("SELECT * FROM $tableName")->fetchAll();
     }
 }
