@@ -7,13 +7,15 @@ $color = $color ?? 'primary';
 $classes = $classes ?? '';
 $label = $label ?? '';
 $href = $href ?? '/';
+$method = $method ?? 'GET';
 $hasLabel = trim((string) $label) !== '';
 
 // dynamic css classes
 $colorClass = "btn-{$color}";
 
 ?>
-<a href="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>"
+<form method="<?= $method ?>" action="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>" style="display:inline;">
+    <button type="submit"
     class="btn btn-close btn-small <?= $colorClass ?> <?= $hasLabel ? 'btn-context-text' : '' ?> <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
     <?= $hasLabel ? 'aria-label="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>
     <?= $hasLabel ? 'data-context-text="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>
@@ -50,4 +52,5 @@ $colorClass = "btn-{$color}";
         </svg> 
 
     <?php endif; ?>
-</a>
+    </button>
+</form>
