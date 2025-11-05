@@ -25,6 +25,7 @@
                             $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
@@ -32,6 +33,7 @@
                             $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'delete'; 
                             $classes = 'delete'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
@@ -57,7 +59,8 @@
                             $icon = 'stats'; 
                             $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
-                            $classes = 'test'; 
+                            $classes = 'test';
+                            $method = 'POST'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
@@ -65,6 +68,7 @@
                             $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = 'test'; 
+                            $method = 'POST'; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
@@ -91,6 +95,7 @@
                             $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'test'; 
                             $classes = ''; 
+                            $method = ''; 
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
@@ -98,6 +103,7 @@
                             $href = '/exercises/' . ($value['id'] ?? ''); 
                             $label = 'delete';
                             $classes = 'delete'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
