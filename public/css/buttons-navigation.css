@@ -1,0 +1,43 @@
+.button {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 50px;
+    background-color: #9b4dca;
+    font-family: "arial", sans-serif;
+}
+
+.button.purple {
+    background-color: #9b4dca;
+}
+
+.button.orange {
+    background-color: rgba(224, 164, 88, 1);
+}
+
+.button.green {
+    background-color: rgba(65, 157, 120, 1);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
