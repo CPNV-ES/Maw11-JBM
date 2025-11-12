@@ -16,31 +16,50 @@ class Exercise
         $this->$status = $status;
     }
 
-    static function all() :array
+    /**
+     * @return array<int, Exercise> $params
+     */
+    static function all() : array
     {
         return Database::getInstance()->getAll('exercises');
     }
 
-
+    /**
+     * @return array<int, Exercise> $params
+     */
     public static function building(): array
     {
         return Database::getInstance()->getAll('exercises', 'status', 'building');
     }
 
+    /**
+     * @return array<int, Exercise> $params
+     */
     public static function answering(): array
     {
         return Database::getInstance()->getAll('exercises', 'status', 'answering');
     }
 
+    /**
+     * @return array<int, Exercise> $params
+     */
     public static function closed(): array
     {
         return Database::getInstance()->getAll('exercises', 'status', 'closed');
     }
 
+
+    /**
+     * @param int $id
+     * @param array<string, string> $POST
+     */
     public static function edit($id, $POST): void
     {
         Database::getInstance()->editItem('exercises',  $POST, $id);
     }
+    /**
+     * @param int $id
+     */
     public static function delete($id): void
     {
         Database::getInstance()->deleteItem('exercises', $id);

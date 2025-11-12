@@ -13,6 +13,9 @@ class ExerciseController
         return view('exercises/index.php', ['buildings' => Exercise::building(), 'closed' => Exercise::closed(), 'answerings' => Exercise::answering()]);
     }
 
+    /**
+     * @param array<string, int | string> $params
+     */
     public function show(array $params): false|string
     {
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
@@ -28,6 +31,9 @@ class ExerciseController
         return view('exercises/index_answering.php', $data);
     }
 
+    /**
+     * @param array<string, int | string> $params
+     */
     public function edit(array $params): false | string
     {
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
@@ -39,6 +45,9 @@ class ExerciseController
         exit;
     }
 
+    /**
+     * @param array<string, int | string> $params
+     */
     public function delete(array $params): false | string
     {
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
