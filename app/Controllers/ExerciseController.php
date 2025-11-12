@@ -45,4 +45,21 @@ class ExerciseController
         }
         return view('exercises/create.php');
     }
+    
+    public function edit(array $params): false|string
+    {
+        $id = (int) $params['id'];
+        $exercise = Exercise::find($id);
+
+        if (!$exercise) {
+            http_response_code(404);
+            return 'Exercice introuvable';
+        }
+
+        return view('exercises/edit.php', ['exercise' => $exercise]);
+    }
+    public function update(): false|string
+    {
+        return view('exercises/edit.php');
+    }
 }
