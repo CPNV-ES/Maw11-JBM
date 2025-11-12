@@ -36,11 +36,11 @@ class ExerciseController
     public function store(): false|string
     {
         if (!empty($_POST["exercise_title"])) {
-            Exercise::create([
+            $id = Exercise::create([
                 'title' => $_POST["exercise_title"],
                 'status' => 'building'
             ]);
-            header('Location: /exercises');
+            header('Location: /exercises/' . $id .'/fields');
             exit;
         }
         return view('exercises/create.php');
