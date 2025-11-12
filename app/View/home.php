@@ -3,9 +3,27 @@ $isHome      = true ?>
 <div class="homepage-container">
     <main class="content">
         <div class="buttons-container">
-            <button onclick="location.href='/exercises/answering'" class="button purple">TAKE AN EXERCISE</button>
-            <button class="button orange">CREATE AN EXERCISE</button>
-            <button onclick="location.href='exercises'" class="button green">MANAGE AN EXERCISE</button>
+            <?php
+                $href = '/exercises/answering';
+                $color = 'purple';
+                $label = 'TAKE AN EXERCISE';
+                $icon = null;
+                include __DIR__ . '/../../core/buttons/navigation.php';
+            ?>
+            <?php
+                $href = '';
+                $label = 'CREATE AN EXERCISE';
+                $color = 'orange';
+                $icon = null;
+                include __DIR__ . '/../../core/buttons/navigation.php';
+            ?>
+            <?php
+                $href = '/exercises';
+                $label = 'MANAGE AN EXERCISE';
+                $color = 'green';
+                $icon = null;
+                include __DIR__ . '/../../core/buttons/navigation.php';
+            ?>
         </div>
     </main>
 </div>

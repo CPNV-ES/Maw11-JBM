@@ -5,8 +5,14 @@
             <?php foreach ($data as $exercise): ?>
                 <li>
                     <div class="column card">
-                        <div class="title"><?= $exercise['TITLE'] ?></div>
-                        <a class="button" href=<?= $exercise['ID'] ?>>Take it</a>
+                        <div class="title"><?= $exercise['title'] ?></div>
+                        <?php
+                            $href = '/exercises/' . $exercise['id'];
+                            $color = 'purple';
+                            $label = 'Take it';
+                            $icon = null;
+                            include __DIR__ . '/../../../core/buttons/navigation.php';
+                        ?>
                     </div>
                 </li>
             <?php endforeach; ?>
