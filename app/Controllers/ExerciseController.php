@@ -24,7 +24,7 @@ class ExerciseController
 
     public function indexAnswering(): false|string
     {
-        $data = Exercise::getExercises();
+        $data = Exercise::all();
         return view('exercises/index_answering.php', $data);
     }
 
