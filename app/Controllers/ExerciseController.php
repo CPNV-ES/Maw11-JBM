@@ -22,12 +22,14 @@ class ExerciseController
         if ($exerciseId === false) {
             return 'Invalid exercise ID';
         }
+
         return view('exercises/show.php');
     }
 
     public function indexAnswering(): false|string
     {
         $data = Exercise::all();
+
         return view('exercises/index_answering.php', $data);
     }
 
@@ -50,6 +52,7 @@ class ExerciseController
      */
     public function delete(array $params): false | string
     {
+
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
         if ($exerciseId === false) {
             return 'Invalid exercise ID';

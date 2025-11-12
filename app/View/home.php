@@ -1,10 +1,6 @@
-<link rel="stylesheet" href="/css/home-page.css">
+<?php $title = 'Home';
+$isHome      = true ?>
 <div class="homepage-container">
-    <header class="header">
-        <img alt="Looper logo" src="/assets/logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png">
-        <h1 class="title">Exercise Looper</h1>
-    </header>
-    
     <main class="content">
         <div class="buttons-container">
             <?php

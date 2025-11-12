@@ -3,6 +3,7 @@
 namespace Maw11Jbm\Controllers;
 
 use Maw11Jbm\Models\Exercise;
+
 use function core\view;
 
 class ExercisesController
