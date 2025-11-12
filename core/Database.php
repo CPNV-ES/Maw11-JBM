@@ -69,7 +69,7 @@ class Database
         $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
     }
 
-    public function createItem($tablename, $item): void
+    public function createItem($tablename, $item): int
     {
         foreach($item as $key => $value){
             $columns[] = $key;
@@ -78,6 +78,15 @@ class Database
         $columnsString = implode(", ", $columns);
         $valuesString = implode(", ", $values);
         $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+        return (int)$this->db->lastInsertId();
+    }
+
+    public function findById(string $tableName, int $id)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getAll($tableName): array
