@@ -19,17 +19,19 @@ class ExerciseController
         if ($exerciseId === false) {
             return 'Invalid exercise ID';
         }
+
         return view('exercises/show.php');
     }
 
     public function indexAnswering(): false|string
     {
         $data = Exercise::getExercises();
+
         return view('exercises/index_answering.php', $data);
     }
 
     public function delete(array $params): false|string
     {
-        
+
     }
 }
