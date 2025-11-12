@@ -13,7 +13,13 @@
                 <li>
                     <div class="column card">
                         <div class="title"><?= $exercise['title'] ?></div>
-                        <a class="button" href=<?= $exercise['id'] ?>>Take it</a>
+                        <?php
+                            $href = '/exercises/' . $exercise['id'];
+                            $color = 'purple';
+                            $label = 'Take it';
+                            $icon = null;
+                            include __DIR__ . '/../../../core/buttons/navigation.php';
+                        ?>
                     </div>
                 </li>
             <?php endforeach; ?>
