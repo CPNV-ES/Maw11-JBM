@@ -22,10 +22,10 @@ class Exercise
     {
         return Database::getInstance()->getAll('exercises');
     }
-
-    public static function create(array $item) : void
+    
+    public static function allWithFields() :array
     {
-        Database::getInstance()->createItem('exercises', $item);
+        return Database::getInstance()->getExerciseWithFields();
     }
 
     public static function create(array $item) : int
