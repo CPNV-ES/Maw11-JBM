@@ -4,13 +4,12 @@
 // default value if not set
 $icon = $icon ?? null;
 $color = $color ?? 'purple';
-$label = $label ?? 'No label no cookie, fuck you set a label!';
+$label = $label ?? 'No label no cookie, set a label!';
 $href = $href ?? '/';
 
 ?>
 <a href="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>"
    class="button <?= $color ?> "
-   <?= $hasLabel ? 'aria-label="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>>
 
     <?php if ($icon === 'takeIt'): ?>
         <!-- TakeIt icon -->
