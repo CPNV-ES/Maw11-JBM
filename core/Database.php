@@ -17,6 +17,12 @@ class Database
             ['id INTEGER PRIMARY KEY AUTOINCREMENT',
                 'title TEXT NOT NULL',
                 'status TEXT NOT NULL']);
+        $this->createTable('fields',
+            ['id INTEGER PRIMARY KEY AUTOINCREMENT',
+                'label TEXT NOT NULL',
+                'value_kind INTEGER NOT NULL',
+                'exercises_id INTEGER NOT NULL',
+                'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
     }
 
     public static function getInstance(): Database
