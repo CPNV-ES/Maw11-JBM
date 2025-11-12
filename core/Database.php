@@ -93,4 +93,43 @@ class Database
     {
         return $this->db->query("SELECT * FROM $tableName")->fetchAll();
     }
+    public function getExerciseWithFields(): ?array {
+        $sql = "
+        SELECT 
+            e.id AS exercise_id,
+            e.name AS exercise_name,
+            e.description,
+            f.id AS field_id,
+            f.name AS field_name,
+            f.value AS field_value
+        FROM exercises e
+        LEFT JOIN fields f ON f.exercise_id = e.id
+        WHERE e.id = :id
+    ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['id' => 3]);
+        /*if (!$rows) {
+            return null;
+        }
+
+        $exercise = [
+            'id' => $rows[0]['exercise_id'],
+            'name' => $rows[0]['exercise_name'],
+            'description' => $rows[0]['description'],
+            'fields' => []
+        ];
+
+        foreach ($rows as $row) {
+            if ($row['field_id'] !== null) {
+                $exercise['fields'][] = [
+                    'id' => $row['field_id'],
+                    'name' => $row['field_name'],
+                    'value' => $row['field_value']
+                ];
+            }
+        }*/
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
