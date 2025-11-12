@@ -38,6 +38,27 @@ class Database
         return $this->db;
     }
 
+    public function update(string $tableName, array $item): void
+    {
+        $updates = array_filter($item, static function ($value) {
+            return null !== $value;
+        });
+        
+        $query = 'UPDATE '. $tableName. ' SET';
+        $values = array();
+
+        foreach ($updates as $name => $value) {
+            $query .= ' '.$name.' = :'.$name.','; 
+            $values[':'.$name] = $value; 
+        }
+
+        $query = substr($query, 0, -1).';';
+
+        $stmt = $this->db->prepare($query);
+
+        $stmt->execute($values);
+    }
+
     public function createTable(string $tableName, array $columns): void
     {
         $columnsSql = [];
