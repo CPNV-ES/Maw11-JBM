@@ -56,11 +56,18 @@ class Database
 
     function editItem($tableName, $item, $id)
     {
-        $columns = [];
-        $values = [];
+        $newValues = [];
+       // Loop in each values in item and edit only keys who is in the $columns array parameter
         foreach ($item as $key => $value) {
-            $columns[] = "$key = '$value'";
+            if($key !== '_method'){
+                $newValues[] = "$key = '$value'";
+            }
         }
+        // Join all new values
+        $columnsValues = implode(", ", $newValues);
+        $this->db->query("UPDATE $tableName 
+                                    SET $columnsValues
+                                    WHERE id = '$id'");
     }
 
     function deleteItem($tableName, $id)
@@ -78,5 +85,10 @@ class Database
         } else {
             return $this->db->query("SELECT * FROM $tableName")->fetchAll();
         }
+    }
+
+    function getOne($tableName, $column, $condition)
+    {
+        return $this->db->query("SELECT * FROM $tableName WHERE $column = '$condition'")->fetch();
     }
 }
