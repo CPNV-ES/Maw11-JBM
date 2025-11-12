@@ -6,13 +6,15 @@
 }
 
 .header {
-    background-color: rgba(155, 77, 202, 1);
     height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
+}
+.header-home {
+    background-color: rgba(155, 77, 202, 1);
 }
 
 .title {

@@ -5,6 +5,7 @@ body {
     font-weight: 300;
     letter-spacing: .01em;
     line-height: 1.6;
+    margin: 0;
 }
 
 .container {
@@ -30,6 +31,13 @@ header.heading {
     z-index: 100;
 }
 
-header.answering {
+.header-exercises {
+    background-color: rgba(65, 157, 120, 1);
+}
+
+.header-answering {
     background-color: rgba(155, 77, 202, 1);
+}
+.header-new {
+    background-color: rgba(224, 164, 88, 1);
 }
