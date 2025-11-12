@@ -52,4 +52,8 @@ class Exercise
     {
         return Database::getInstance()->getAll('exercises', 'status', 'closed');
     }
+    public static function delete($id): void
+    {
+        Database::getInstance()->deleteItem('exercises', $id);
+    }
 }

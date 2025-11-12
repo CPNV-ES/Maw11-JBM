@@ -77,7 +77,6 @@ class Database
                     WHERE $column = '$condition'")->fetchAll();
         } else {
             return $this->db->query("SELECT * FROM $tableName")->fetchAll();
-
         }
     }
 }

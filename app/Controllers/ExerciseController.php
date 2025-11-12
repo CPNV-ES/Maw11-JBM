@@ -28,8 +28,15 @@ class ExerciseController
         return view('exercises/index_answering.php', $data);
     }
 
-    public function delete(array $params): false|string
+    public function delete(array $params): false | string
     {
-        
+        $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+        if ($exerciseId === false) {
+            return 'Invalid exercise ID';
+        }
+        Exercise::delete($exerciseId);
+
+        header('Location: /exercises');
+        exit;
     }
 }
