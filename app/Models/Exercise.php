@@ -16,7 +16,7 @@ class Exercise
         $this->status = $status;
     }
 
-    public static function getExercises() :array
+    public static function all() :array
     {
         return Database::getInstance()->getAll('exercises');
     }
