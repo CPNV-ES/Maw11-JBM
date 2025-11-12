@@ -60,7 +60,7 @@
                             $href = '/exercises/' . ($value['id'] ?? '');
                             $label = 'test'; 
                             $classes = 'test';
-                            $method = 'POST'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php 
@@ -68,7 +68,7 @@
                             $href = '/exercises/' . ($value['id'] ?? '');
                             $label = 'test'; 
                             $classes = 'test'; 
-                            $method = 'POST'; 
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>

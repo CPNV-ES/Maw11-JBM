@@ -24,8 +24,19 @@ class ExerciseController
 
     public function indexAnswering(): false|string
     {
-        $data = Exercise::getExercises();
+        $data = Exercise::all();
         return view('exercises/index_answering.php', $data);
+    }
+
+    public function edit(array $params): false | string
+    {
+        $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+        if ($exerciseId === false) {
+            return 'Invalid exercise ID';
+        }
+        Exercise::edit($exerciseId, $_POST);
+        header('Location: /exercises');
+        exit;
     }
 
     public function delete(array $params): false | string
@@ -39,4 +50,5 @@ class ExerciseController
         header('Location: /exercises');
         exit;
     }
+
 }
