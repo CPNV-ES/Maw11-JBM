@@ -9,8 +9,8 @@
         <div class="buttons-container">
             <?php
                 $href = '/exercises/answering';
-                $label = 'TAKE AN EXERCISE';
                 $color = 'purple';
+                $label = 'TAKE AN EXERCISE';
                 $icon = null;
                 include __DIR__ . '/../../core/buttons/navigation.php';
             ?>
