@@ -67,6 +67,10 @@ class Exercise
         Database::getInstance()->deleteItem('exercises', $id);
     }
 
+    /**
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
     public static function extractEditedAttributes($data): array
     {
         $extractedData = [];
