@@ -53,11 +53,10 @@ class Exercise
 
     /**
      * @param int $id
-     * @param array<string, string> $POST
      */
-    public static function edit($id, $POST): void
+    public static function edit($id): void
     {
-        $data = self::extractEditedAttributes($POST);
+        $data = self::extractEditedAttributes($_POST);
         Database::getInstance()->editItem('exercises',  $data, $id);
     }
     /**

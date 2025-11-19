@@ -42,7 +42,7 @@ class ExerciseController
         if ($exerciseId === false) {
             return 'Invalid exercise ID';
         }
-        Exercise::edit($exerciseId, $_POST);
+        Exercise::edit($exerciseId);
         header('Location: /exercises');
         exit;
     }
