@@ -27,7 +27,8 @@
                             $label = 'delete'; 
                             $classes = 'delete'; 
                             $method = 'POST';
-                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                            $confirm = true;
+                        include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                     </td>
                 </tr>
@@ -97,6 +98,7 @@
                             $label = 'delete';
                             $classes = 'delete'; 
                             $method = 'POST';
+                            $confirm = true;
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
