@@ -52,8 +52,7 @@ How to deploy the application outside the dev environment.
 ```shell
 ├── app                                                                                                                                                                               
 │ ├── Controllers                                                                                                                                                                   
-│ │ ├── ExerciseController.php                                                                                                                                                    
-│ │ ├── ExercisesController.php                                                                                                                                                   
+│ │ ├── ExerciseController.php                                                                                                                                                                                                                                                                                                      
 │ │ ├── HomeController.php                                                                                                                                                    
 │ │ └── UserController.php                                                                                                                                                        
 │ ├── Models                                                                                                                                                                        
