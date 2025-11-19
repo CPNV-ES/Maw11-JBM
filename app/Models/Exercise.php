@@ -57,7 +57,8 @@ class Exercise
      */
     public static function edit($id, $POST): void
     {
-        Database::getInstance()->editItem('exercises',  $POST, $id);
+        $data = self::extractEditedAttributes($POST);
+        Database::getInstance()->editItem('exercises',  $data, $id);
     }
     /**
      * @param int $id
@@ -65,5 +66,16 @@ class Exercise
     public static function delete($id): void
     {
         Database::getInstance()->deleteItem('exercises', $id);
+    }
+
+    public static function extractEditedAttributes($data): array
+    {
+        $extractedData = [];
+       foreach($data as $key => $value) {
+               if (property_exists(self::class, $key)) {
+                   $extractedData[$key] = $value;
+           }
+       }
+        return $extractedData;
     }
 }
