@@ -11,7 +11,7 @@ $icon                 = null;
 include __DIR__ . '/../../core/buttons/navigation.php';
 ?>
             <?php
-    $href = '';
+    $href = '/exercises/new';
 $label    = 'CREATE AN EXERCISE';
 $color    = 'orange';
 $icon     = null;
