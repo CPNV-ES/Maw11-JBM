@@ -92,15 +92,10 @@ class Exercise
         return Database::getInstance()->getAll('exercises', 'status', 'answering');
     }
 
-    /**
-     * @return array<int, Exercise>
-     */
     public static function closed(): array
     {
         return Database::getInstance()->getAll('exercises', 'status', 'closed');
     }
-
-
     /**
      * @param int $id
      */
@@ -108,13 +103,6 @@ class Exercise
     {
         $data = self::extractEditedAttributes($_POST);
         Database::getInstance()->editItem('exercises',  $data, $id);
-    }
-    /**
-     * @param int $id
-     */
-    public static function delete($id): void
-    {
-        Database::getInstance()->deleteItem('exercises', $id);
     }
 
     /**
@@ -124,11 +112,19 @@ class Exercise
     public static function extractEditedAttributes($data): array
     {
         $extractedData = [];
-       foreach($data as $key => $value) {
-               if (property_exists(self::class, $key)) {
-                   $extractedData[$key] = $value;
-           }
-       }
+        foreach($data as $key => $value) {
+            if (property_exists(self::class, $key)) {
+                $extractedData[$key] = $value;
+            }
+        }
         return $extractedData;
+    }
+
+    /**
+     * @param int $id
+     */
+    public static function delete($id): void
+    {
+        Database::getInstance()->deleteItem('exercises', $id);
     }
 }

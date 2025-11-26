@@ -36,15 +36,18 @@ class ExerciseController
     /**
      * @param array<string, int | string> $params
      */
-    public function edit(array $params): false | string
+    public function edit(array $params): false|string
     {
-        $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
-        if ($exerciseId === false) {
-            return 'Invalid exercise ID';
+        $id       = (int) $params['id'];
+        $exercise = Exercise::find($id);
+
+        if (!$exercise) {
+            http_response_code(404);
+
+            return 'Exercice introuvable';
         }
-        Exercise::edit($exerciseId);
-        header('Location: /exercises');
-        exit;
+
+        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id)]);
     }
 
     /**
@@ -83,9 +86,14 @@ class ExerciseController
     }
 
 
-    public function update(): false|string
+    public function update(array $params): false|string
     {
-        return view('exercises/edit.php');
-    }
 
+        $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+        if ($exerciseId === false) {
+            return 'Invalid exercise ID';
+        }
+        Exercise::edit($exerciseId);
+        header('Location: /exercises');
+        exit;    }
 }

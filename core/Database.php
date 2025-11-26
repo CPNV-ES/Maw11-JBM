@@ -64,15 +64,25 @@ class Database
 
     public function createItem($tablename, $item): int
     {
+//        foreach ($item as $key => $value) {
+//            $columns[] = $key;
+//            $values[] = "'$value'";
+//        }
+//        $columnsString = implode(", ", $columns);
+//        $valuesString = implode(", ", $values);
+//        $request = $this->db->prepare("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+//        $this->db->exec($request);
+//        return $this->db->lastInsertId();
+
         foreach ($item as $key => $value) {
             $columns[] = $key;
             $values[] = "'$value'";
         }
         $columnsString = implode(", ", $columns);
         $valuesString = implode(", ", $values);
-        $request = $this->db->prepare("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
-        $this->db->exec($request);
-        return $this->db->lastInsertId();
+        $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+
+        return (int)$this->db->lastInsertId();
     }
 
 
