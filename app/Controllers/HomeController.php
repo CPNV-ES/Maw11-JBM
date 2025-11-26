@@ -6,7 +6,7 @@ use function core\view;
 
 class HomeController
 {
-    public function index(): false|string
+    public static function index(): false|string
     {
         return view('home.php');
     }

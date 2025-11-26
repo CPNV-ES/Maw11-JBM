@@ -25,13 +25,51 @@ class ExerciseController
 
     public function indexAnswering(): false|string
     {
-        $data = Exercise::getExercises();
+        $data = Exercise::all();
 
         return view('exercises/index_answering.php', $data);
+    }
+
+    public function create(): false|string
+    {
+        return view('exercises/create.php');
+    }
+
+    public function store(): false|string
+    {
+        if (!empty($_POST['exercise_title'])) {
+            $id = Exercise::create([
+                'title'  => $_POST['exercise_title'],
+                'status' => 'building',
+            ]);
+            header('Location: /exercises/' . $id . '/fields');
+            exit;
+        }
+
+        return view('exercises/create.php');
     }
 
     public function delete(array $params): false|string
     {
 
+    }
+
+    public function edit(array $params): false|string
+    {
+        $id       = (int) $params['id'];
+        $exercise = Exercise::find($id);
+
+        if (!$exercise) {
+            http_response_code(404);
+
+            return 'Exercice introuvable';
+        }
+
+        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id)]);
+    }
+
+    public function update(): false|string
+    {
+        return view('exercises/edit.php');
     }
 }
