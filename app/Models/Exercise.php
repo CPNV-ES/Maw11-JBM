@@ -19,7 +19,7 @@ class Exercise
     }
 
     /**
-     * @return array<int, Exercise> $params
+     * @return array<int, Exercise>
      */
     public static function all() : array
     {
@@ -27,7 +27,7 @@ class Exercise
     }
 
     /**
-     * @return array<int, Exercise> $params
+     * @return array<int, Exercise>
      */
     public static function building(): array
     {
@@ -35,7 +35,7 @@ class Exercise
     }
 
     /**
-     * @return array<int, Exercise> $params
+     * @return array<int, Exercise>
      */
     public static function answering(): array
     {
@@ -43,7 +43,7 @@ class Exercise
     }
 
     /**
-     * @return array<int, Exercise> $params
+     * @return array<int, Exercise>
      */
     public static function closed(): array
     {
