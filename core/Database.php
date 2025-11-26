@@ -73,7 +73,8 @@ class Database
 
     function deleteItem($tableName, $id)
     {
-        $this->db->query("DELETE FROM $tableName WHERE id = '$id'");
+        $stmt = $this->db->prepare("DELETE FROM $tableName WHERE id = :id");
+        $stmt->execute([':id' => $id]);
 
     }
 
