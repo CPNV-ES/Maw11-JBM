@@ -12,7 +12,6 @@ $db = new Database();
 
 $router = new Router();
 
-
 include APP_DIR . '/routes.php';
 
 try {

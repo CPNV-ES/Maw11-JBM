@@ -50,7 +50,26 @@ class ExerciseController
     /**
      * @param array<string, int | string> $params
      */
-    public function delete(array $params): false | string
+    public function create(): false|string
+    {
+        return view('exercises/create.php');
+    }
+
+    public function store(): false|string
+    {
+        if (!empty($_POST['exercise_title'])) {
+            $id = Exercise::create([
+                'title'  => $_POST['exercise_title'],
+                'status' => 'building',
+            ]);
+            header('Location: /exercises/' . $id . '/fields');
+            exit;
+        }
+
+        return view('exercises/create.php');
+    }
+
+    public function delete(array $params): false|string
     {
 
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
@@ -61,6 +80,12 @@ class ExerciseController
 
         header('Location: /exercises');
         exit;
+    }
+
+
+    public function update(): false|string
+    {
+        return view('exercises/edit.php');
     }
 
 }
