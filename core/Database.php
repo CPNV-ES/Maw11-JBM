@@ -2,6 +2,7 @@
 
 namespace core;
 
+use Illuminate\Support\Collection;
 use PDO;
 
 class Database
@@ -13,16 +14,18 @@ class Database
     public function __construct()
     {
         $this->db = new PDO('sqlite:looper.db');
-        $this->createTable('exercises',
-            ['id INTEGER PRIMARY KEY AUTOINCREMENT',
-                'title TEXT NOT NULL',
-                'status TEXT NOT NULL']);
-        $this->createTable('fields',
-            ['id INTEGER PRIMARY KEY AUTOINCREMENT',
-                'label TEXT NOT NULL',
-                'value_kind INTEGER NOT NULL',
-                'exercises_id INTEGER NOT NULL',
-                'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
+        $this->createTable('exercises', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'title TEXT NOT NULL', 'status TEXT NOT NULL']);
+        $this->createTable('fields', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'label TEXT NOT NULL', 'value_kind INTEGER NOT NULL', 'exercises_id INTEGER NOT NULL', 'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
+    }
+
+    public function createTable(string $tableName, array $columns): void
+    {
+        $columnsSql = [];
+        foreach ($columns as $index => $column) {
+            $columnsSql[] = (string)$column;
+        }
+        $columnsString = implode(",\n", $columnsSql);
+        $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
     }
 
     public static function getInstance(): Database
@@ -59,19 +62,9 @@ class Database
         $stmt->execute($values);
     }
 
-    public function createTable(string $tableName, array $columns): void
-    {
-        $columnsSql = [];
-        foreach ($columns as $index => $column) {
-            $columnsSql[] = (string)$column;
-        }
-        $columnsString = implode(",\n", $columnsSql);
-        $this->db->query("CREATE TABLE IF NOT EXISTS $tableName($columnsString)");
-    }
-
     public function createItem($tablename, $item): int
     {
-        foreach($item as $key => $value){
+        foreach ($item as $key => $value) {
             $columns[] = $key;
             $values[] = "'$value'";
         }
@@ -93,43 +86,22 @@ class Database
     {
         return $this->db->query("SELECT * FROM $tableName")->fetchAll();
     }
-    public function getExerciseWithFields(): ?array {
-        $sql = "
-        SELECT 
-            e.id AS exercise_id,
-            e.name AS exercise_name,
-            e.description,
-            f.id AS field_id,
-            f.name AS field_name,
-            f.value AS field_value
-        FROM exercises e
-        LEFT JOIN fields f ON f.exercise_id = e.id
-        WHERE e.id = :id
-    ";
+    public function fetchAllWithJoins(string $baseTable, array $joins, ?string $where = null, array $params = [], string $columns = '*'): Collection
+    {
+        $sql = "SELECT {$columns} FROM {$baseTable}";
 
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['id' => 3]);
-        /*if (!$rows) {
-            return null;
+        foreach ($joins as $join) {
+            $type = $join['type'] ?? 'INNER';
+            $sql .= " {$type} JOIN {$join['table']} ON {$join['on']}";
         }
 
-        $exercise = [
-            'id' => $rows[0]['exercise_id'],
-            'name' => $rows[0]['exercise_name'],
-            'description' => $rows[0]['description'],
-            'fields' => []
-        ];
+        if ($where) {
+            $sql .= " WHERE {$where}";
+        }
 
-        foreach ($rows as $row) {
-            if ($row['field_id'] !== null) {
-                $exercise['fields'][] = [
-                    'id' => $row['field_id'],
-                    'name' => $row['field_name'],
-                    'value' => $row['field_value']
-                ];
-            }
-        }*/
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return collect($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
 }
