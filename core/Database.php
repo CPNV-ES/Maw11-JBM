@@ -50,7 +50,8 @@ class Database
         }
         $columnsString = implode(", ", $columns);
         $valuesString = implode(", ", $values);
-        $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+        $request = $this->db->prepare("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+        $this->db->exec($request);
     }
 
 
