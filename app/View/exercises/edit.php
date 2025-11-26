@@ -1,11 +1,7 @@
-<header class="heading answering">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="/css/exercises.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <section class="container">
-        <a href="/"><img src="/assets/logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png"></a>
-    </section>
-</header>
+<?php
+$title      = 'New';
+$labelTitle = $exercises['title'];
+?>
 <div class="container main">
     <div class="row">
         <section class="column"> 
@@ -19,12 +15,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($fields as $field): ?>
+                <?php foreach ($exercises['fields'] as $exercise): ?>
                     <tr>
-                        <td><?=$field['label']?></td>
-                        <td><?=$field['value_kind']?></td>
-                        <td><a href="/exercises/<?=$exercise['id'] . "/fields/" . $field['id'] . "/edit"?>">Edit</a></td>
-                        <td><a href="/exercises/<?=$exercise['id'] . "/fields/" . $field['id'] . "/delete"?>">Delete</a></td>
+                        <td><?=$exercise['label']?></td>
+                        <td><?=$exercise['value_kind']?></td>
+                        <td><a href="/exercises/<?=$exercises['id'] . '/fields/' . $exercise['id'] . '/edit'?>">Edit</a></td>
+                        <td><a href="/exercises/<?=$exercises['id'] . '/fields/' . $exercise['id'] . '/delete'?>">Delete</a></td>
                 <?php endforeach; ?>
                 </tbody>
             </table>
@@ -32,11 +28,11 @@
         </section>
         <section class="column">
             <h1>New Field</h1>
-            <form action="/exercises/<?=$exercise['id'] . "/fields"?>" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" />
+            <form action="/exercises/<?=$exercises['id'] . '/fields'?>" accept-charset="UTF-8" method="POST"><input name="utf8" type="hidden"/><input type="hidden" name="authenticity_token" />
                 <div class="field">
                     <label for="field_label">Label</label>
                     <input type="text" name="field_label" id="field_label" />
-                    <input type="hidden" name="exercise_id" value="<?=$exercise['id']?>">
+                    <input type="hidden" name="exercises_id" value="<?=$exercises['id']?>">
                 </div>
                 <div class="field">
                     <label for="field_value_kind">Value kind</label>
