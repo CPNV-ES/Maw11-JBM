@@ -105,6 +105,11 @@ class Database
 
     function getOne($tableName, $column, $condition)
     {
-        return $this->db->query("SELECT * FROM $tableName WHERE $column = '$condition'")->fetch();
-    }
+        $validColumns = $this->getTableColumns($tableName);
+        if (!in_array($column, $validColumns)) {
+            throw new \InvalidArgumentException("Invalid column name: $column");
+        }
+        $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $column = ?");
+        $stmt->execute([$condition]);
+        return $stmt->fetch();    }
 }
