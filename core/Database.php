@@ -57,18 +57,32 @@ class Database
 
     function editItem($tableName, $item, $id)
     {
+        $validColumns = $this->getTableColumns($tableName);
         $newValues = [];
-       // Loop in each values in item and edit only keys who is in the $columns array parameter
+        $params = [];
         foreach ($item as $key => $value) {
-            if($key !== '_method'){
-                $newValues[] = "$key = '$value'";
+            if ($key !== '_method' && in_array($key, $validColumns)) {
+                $newValues[] = "$key = ?";
+                $params[] = $value;
             }
         }
-        // Join all new values
+        if (empty($newValues)) {
+            return; // Nothing to update
+        }
         $columnsValues = implode(", ", $newValues);
-        $this->db->query("UPDATE $tableName 
-                                    SET $columnsValues
-                                    WHERE id = '$id'");
+        $params[] = $id;
+        $stmt = $this->db->prepare("UPDATE $tableName SET $columnsValues WHERE id = ?");
+        $stmt->execute($params);
+    }
+
+    private function getTableColumns($tableName)
+    {
+        $stmt = $this->db->query("PRAGMA table_info($tableName)");
+        $columns = [];
+        foreach ($stmt as $row) {
+            $columns[] = $row['name'];
+        }
+        return $columns;
     }
 
     function deleteItem($tableName, $id)
