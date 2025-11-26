@@ -67,7 +67,7 @@ class Database
             }
         }
         if (empty($newValues)) {
-            return; // Nothing to update
+            return;
         }
         $columnsValues = implode(", ", $newValues);
         $params[] = $id;
@@ -95,9 +95,9 @@ class Database
     function getAll($tableName, $column = null, $condition = null)
     {
         if ($column != null) {
-            return $this->db->query(
-                "SELECT * FROM $tableName 
-                    WHERE $column = '$condition'")->fetchAll();
+            $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $column = ?");
+            $stmt->execute([$condition]);
+            return $stmt->fetchAll();
         } else {
             return $this->db->query("SELECT * FROM $tableName")->fetchAll();
         }
