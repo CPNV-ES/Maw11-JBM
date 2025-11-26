@@ -14,7 +14,7 @@ class FieldController
             Field::create([
                 'label'        => $_POST['field_label'],
                 'value_kind'   => $_POST['field_value_kind'],
-                'exercises_id' => $_POST['exercise_id'],
+                'exercises_id' => $_POST['exercises_id'],
             ]);
             header('Location: ' . $_SERVER['REQUEST_URI']);
             exit;
