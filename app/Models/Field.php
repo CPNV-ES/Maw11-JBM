@@ -6,7 +6,7 @@ use core\Database;
 
 class Field
 {
-    public static function all() :array
+    public static function all(): array
     {
         return Database::getInstance()->getAll('fields');
     }

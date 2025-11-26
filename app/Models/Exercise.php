@@ -14,26 +14,26 @@ class Exercise
 
     public function __construct(string $title, string $status)
     {
-        $this->title = $title;
+        $this->title  = $title;
         $this->status = $status;
     }
 
-    public static function all() :array
+    public static function all(): array
     {
         return Database::getInstance()->getAll('exercises');
     }
-    
-    public static function allWithFields() :array
+
+    public static function allWithFields(int $id): array
     {
         return Database::getInstance()->getExerciseWithFields();
     }
 
-    public static function create(array $item) : int
+    public static function create(array $item): int
     {
         return Database::getInstance()->createItem('exercises', $item);
     }
-    
-    public static function find(int $id) : array
+
+    public static function find(int $id): array
     {
         return Database::getInstance()->findById('exercises', $id);
     }

@@ -8,11 +8,11 @@
                         <div class="title"><?= $exercise['title'] ?></div>
                         <?php
                             $href = '/exercises/' . $exercise['id'];
-                            $color = 'purple';
-                            $label = 'Take it';
-                            $icon = null;
-                            include __DIR__ . '/../../../core/buttons/navigation.php';
-                        ?>
+                $color            = 'purple';
+                $label            = 'Take it';
+                $icon             = null;
+                include __DIR__ . '/../../../core/buttons/navigation.php';
+                ?>
                     </div>
                 </li>
             <?php endforeach; ?>
