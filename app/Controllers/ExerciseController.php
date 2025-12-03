@@ -23,14 +23,14 @@ class ExerciseController
             return 'Invalid exercise ID';
         }
 
-        return view('exercises/show.php');
+        return view('exercises/create.php', ['exercise' => Exercise::find($exerciseId)]);
     }
 
-    public function indexAnswering(): false|string
+    public function indexTaking(): false|string
     {
         $data = Exercise::all();
 
-        return view('exercises/index_answering.php', $data);
+        return view('exercises/index_take.php', $data);
     }
 
     /**
@@ -46,7 +46,6 @@ class ExerciseController
 
             return 'Exercice introuvable';
         }
-
         return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id)]);
     }
 
