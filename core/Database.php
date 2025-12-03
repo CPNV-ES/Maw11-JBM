@@ -41,29 +41,19 @@ class Database
         return $this->db;
     }
 
-    public function update(string $tableName, array $item): void
-    {
-        $updates = array_filter($item, static function ($value) {
-            return null !== $value;
-        });
-
-        $query = 'UPDATE ' . $tableName . ' SET';
-        $values = array();
-
-        foreach ($updates as $name => $value) {
-            $query .= ' ' . $name . ' = :' . $name . ',';
-            $values[':' . $name] = $value;
-        }
-
-        $query = substr($query, 0, -1) . ';';
-
-        $stmt = $this->db->prepare($query);
-
-        $stmt->execute($values);
-    }
 
     public function createItem($tablename, $item): int
     {
+//        foreach ($item as $key => $value) {
+//            $columns[] = $key;
+//            $values[] = "'$value'";
+//        }
+//        $columnsString = implode(", ", $columns);
+//        $valuesString = implode(", ", $values);
+//        $request = $this->db->prepare("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+//        $this->db->exec($request);
+//        return $this->db->lastInsertId();
+
         foreach ($item as $key => $value) {
             $columns[] = $key;
             $values[] = "'$value'";
@@ -71,7 +61,39 @@ class Database
         $columnsString = implode(", ", $columns);
         $valuesString = implode(", ", $values);
         $this->db->query("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
+
         return (int)$this->db->lastInsertId();
+    }
+
+
+    function update($tableName, $item, $id)
+    {
+        $validColumns = $this->getTableColumns($tableName);
+        $newValues = [];
+        $params = [];
+        foreach ($item as $key => $value) {
+            if ($key !== '_method' && in_array($key, $validColumns)) {
+                $newValues[] = "$key = ?";
+                $params[] = $value;
+            }
+        }
+        if (empty($newValues)) {
+            return;
+        }
+        $columnsValues = implode(", ", $newValues);
+        $params[] = $id;
+        $stmt = $this->db->prepare("UPDATE $tableName SET $columnsValues WHERE id = ?");
+        $stmt->execute($params);
+    }
+
+    private function getTableColumns($tableName)
+    {
+        $stmt = $this->db->query("PRAGMA table_info($tableName)");
+        $columns = [];
+        foreach ($stmt as $row) {
+            $columns[] = $row['name'];
+        }
+        return $columns;
     }
 
     public function findById(string $tableName, int $id)
@@ -82,9 +104,22 @@ class Database
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getAll($tableName): array
+    function deleteItem($tableName, $id)
     {
-        return $this->db->query("SELECT * FROM $tableName")->fetchAll();
+        $stmt = $this->db->prepare("DELETE FROM $tableName WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+
+    }
+
+    function getAll($tableName, $column = null, $condition = null)
+    {
+        if ($column != null) {
+            $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $column = ?");
+            $stmt->execute([$condition]);
+            return $stmt->fetchAll();
+        } else {
+            return $this->db->query("SELECT * FROM $tableName")->fetchAll();
+        }
     }
     public function fetchAllWithJoins(string $baseTable, array $joins, ?string $where = null, array $params = [], string $columns = '*'): Collection
     {
@@ -104,4 +139,14 @@ class Database
 
         return collect($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
+
+    function getOne($tableName, $column, $condition)
+    {
+        $validColumns = $this->getTableColumns($tableName);
+        if (!in_array($column, $validColumns)) {
+            throw new \InvalidArgumentException("Invalid column name: $column");
+        }
+        $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $column = ?");
+        $stmt->execute([$condition]);
+        return $stmt->fetch();    }
 }

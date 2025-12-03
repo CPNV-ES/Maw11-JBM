@@ -9,25 +9,26 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($buildings ?? []) as $key => $value): ?>
+            <?php foreach (($buildings ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php
-                            $icon = 'edit';
-                            $href             = '/exercises/' . ($value['id'] ?? '');
-                            $label            = 'test';
-                            $classes          = 'test';
-                            $method           = 'POST';
+                        <?php 
+                            $icon = 'edit'; 
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'test';
+                            $classes = 'test';
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
                             $icon = 'delete';
-                            $href     = '/exercises/' . ($value['id'] ?? '');
-                            $label    = 'delete';
-                            $classes  = 'delete';
-                            $method   = 'POST';
-                            include __DIR__ . '/../../../core/buttons/action.php';
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'delete'; 
+                            $classes = 'delete'; 
+                            $method = 'POST';
+                            $confirm = true;
+                        include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                     </td>
                 </tr>
@@ -44,25 +45,25 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($answerings ?? []) as $key => $value): ?>
+            <?php foreach (($answerings ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php
-                            $icon = 'stats';
-                            $href     = '/exercises/' . ($value['id'] ?? '');
-                            $label    = 'test';
-                            $classes  = 'test';
-                            $method   = 'POST';
+                        <?php 
+                            $icon = 'stats'; 
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'test';
+                            $classes = 'test';
+                            $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
                             $icon = 'close';
-                            $href     = '/exercises/' . ($value['id'] ?? '');
-                            $label    = 'test';
-                            $classes  = 'test';
-                            $method   = 'POST';
-                            include __DIR__ . '/../../../core/buttons/action.php';
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'test';
+                            $classes = 'test';
+                            $method = 'POST';
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
                 </tr>
@@ -79,25 +80,26 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($closed ?? []) as $key => $value): ?>
+            <?php foreach (($closed ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php
-                            $icon = 'stats';
-                            $href     = '/exercises/' . ($value['id'] ?? '');
-                            $label    = 'test';
-                            $classes  = '';
-                            $method   = '';
+                        <?php 
+                            $icon = 'stats'; 
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'test';
+                            $classes = '';
+                            $method = '';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
                             $icon = 'delete';
-                            $href     = '/exercises/' . ($value['id'] ?? '');
-                            $label    = 'delete';
-                            $classes  = 'delete';
-                            $method   = 'POST';
-                            include __DIR__ . '/../../../core/buttons/action.php';
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'delete';
+                            $classes = 'delete'; 
+                            $method = 'POST';
+                            $confirm = true;
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
                 </tr>

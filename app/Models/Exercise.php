@@ -19,7 +19,11 @@ class Exercise
         $this->status = $status;
     }
 
-    public static function all(): array
+
+    /**
+     * @return array<int, Exercise>
+     */
+    public static function all() : array
     {
         return Database::getInstance()->getAll('exercises');
     }
@@ -72,32 +76,55 @@ class Exercise
             ];
     }
 
+    /**
+     * @return array<int, Exercise>
+     */
     public static function building(): array
     {
-        return [
-            ['id' => 1, 'title' => 'Exercise 1'],
-            ['id' => 2, 'title' => 'Exercise 2'],
-            ['id' => 3, 'title' => 'Exercise 3'],
-        ];
+        return Database::getInstance()->getAll('exercises', 'status', 'building');
     }
 
+    /**
+     * @return array<int, Exercise>
+     */
     public static function answering(): array
     {
-        return [
-            ['id' => 4, 'title' => 'Exercise 4'],
-            ['id' => 5, 'title' => 'Exercise 5'],
-            ['id' => 6, 'title' => 'Exercise 6'],
-        ];
+        return Database::getInstance()->getAll('exercises', 'status', 'answering');
     }
 
     public static function closed(): array
     {
-        return [
-            ['id' => 7, 'title' => 'Exercise 7'],
-            ['id' => 8, 'title' => 'Exercise 8'],
-            ['id' => 9, 'title' => 'Exercise 9'],
-            ['id' => 10, 'title' => 'Exercise 10'],
-            ['id' => 11, 'title' => 'Exercise 11'],
-        ];
+        return Database::getInstance()->getAll('exercises', 'status', 'closed');
+    }
+    /**
+     * @param int $id
+     */
+    public static function edit($id): void
+    {
+        $data = self::extractEditedAttributes($_POST);
+        Database::getInstance()->update('exercises',  $data, $id);
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
+    public static function extractEditedAttributes($data): array
+    {
+        $extractedData = [];
+        foreach($data as $key => $value) {
+            if (property_exists(self::class, $key)) {
+                $extractedData[$key] = $value;
+            }
+        }
+        return $extractedData;
+    }
+
+    /**
+     * @param int $id
+     */
+    public static function delete($id): void
+    {
+        Database::getInstance()->deleteItem('exercises', $id);
     }
 }

@@ -13,6 +13,9 @@ class ExerciseController
         return view('exercises/index.php', ['buildings' => Exercise::building(), 'closed' => Exercise::closed(), 'answerings' => Exercise::answering()]);
     }
 
+    /**
+     * @param array<string, int | string> $params
+     */
     public function show(array $params): false|string
     {
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
@@ -30,6 +33,26 @@ class ExerciseController
         return view('exercises/index_answering.php', $data);
     }
 
+    /**
+     * @param array<string, int | string> $params
+     */
+    public function edit(array $params): false|string
+    {
+        $id       = (int) $params['id'];
+        $exercise = Exercise::find($id);
+
+        if (!$exercise) {
+            http_response_code(404);
+
+            return 'Exercice introuvable';
+        }
+
+        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id)]);
+    }
+
+    /**
+     * @param array<string, int | string> $params
+     */
     public function create(): false|string
     {
         return view('exercises/create.php');
@@ -52,24 +75,25 @@ class ExerciseController
     public function delete(array $params): false|string
     {
 
-    }
-
-    public function edit(array $params): false|string
-    {
-        $id       = (int) $params['id'];
-        $exercise = Exercise::find($id);
-
-        if (!$exercise) {
-            http_response_code(404);
-
-            return 'Exercice introuvable';
+        $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+        if ($exerciseId === false) {
+            return 'Invalid exercise ID';
         }
+        Exercise::delete($exerciseId);
 
-        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id)]);
+        header('Location: /exercises');
+        exit;
     }
 
-    public function update(): false|string
+
+    public function update(array $params): false|string
     {
-        return view('exercises/edit.php');
-    }
+
+        $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+        if ($exerciseId === false) {
+            return 'Invalid exercise ID';
+        }
+        Exercise::edit($exerciseId);
+        header('Location: /exercises');
+        exit;    }
 }
