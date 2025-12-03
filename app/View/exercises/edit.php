@@ -5,7 +5,7 @@ $labelTitle = $exercises['title'];
 <div class="container main">
     <div class="row">
         <section class="column"> 
-            <h1>Fields</h1> 
+            <h1>Fields</h1>
             <table class="records">
                 <thead>
                 <tr>

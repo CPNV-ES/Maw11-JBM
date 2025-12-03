@@ -40,10 +40,12 @@ li {
     text-transform: uppercase;
     white-space: nowrap;
 }
+
 .column {
     margin: 0 auto;
     width: 100%;
 }
+
 .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -86,6 +88,16 @@ a {
     color: #9b4dca;
     text-decoration: none;
 }
+
 a:focus, a:hover {
     color: #606c76;
+}
+
+.input {
+    border: 0.1rem solid #ccc;
+    border-radius: .4rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
