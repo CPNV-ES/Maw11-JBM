@@ -16,7 +16,7 @@ class Database
         $this->db = new PDO('sqlite:looper.db');
         $this->createTable('exercises', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'title TEXT NOT NULL', 'status TEXT NOT NULL']);
         $this->createTable('fields', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'label TEXT NOT NULL', 'value_kind INTEGER NOT NULL', 'exercises_id INTEGER NOT NULL', 'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
-        $this->createTable('results', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'result TEXT NOT NULL', 'field_id INTEGER NOT NULL', 'FOREIGN KEY("field_id") REFERENCES "fields"("id")']);
+        $this->createTable('results', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'result TEXT NOT NULL', 'fields_id INTEGER NOT NULL', 'FOREIGN KEY("fields_id") REFERENCES "fields"("id")']);
     }
 
     public function createTable(string $tableName, array $columns): void
@@ -137,7 +137,6 @@ class Database
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);
-
         return collect($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
 

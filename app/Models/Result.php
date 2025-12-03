@@ -4,16 +4,15 @@ namespace Maw11Jbm\Models;
 
 use core\Database;
 
-class Field
+class Result
 {
     public static function all(): array
     {
-        return Database::getInstance()->getAll('fields');
+        return Database::getInstance()->getAll('results');
     }
 
     public static function create(array $item): int
     {
-        return Database::getInstance()->createItem('fields', $item);
+        return Database::getInstance()->createItem('result', $item);
     }
-
 }

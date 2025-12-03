@@ -22,4 +22,5 @@ class FieldController
 
         return view('exercises/create.php');
     }
+
 }
