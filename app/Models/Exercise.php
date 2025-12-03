@@ -102,7 +102,7 @@ class Exercise
     public static function edit($id): void
     {
         $data = self::extractEditedAttributes($_POST);
-        Database::getInstance()->editItem('exercises',  $data, $id);
+        Database::getInstance()->update('exercises',  $data, $id);
     }
 
     /**
