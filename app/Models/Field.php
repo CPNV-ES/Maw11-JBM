@@ -15,4 +15,14 @@ class Field
     {
         return Database::getInstance()->createItem('fields', $item);
     }
+    
+    public static function find(int $id): array
+    {
+        return Database::getInstance()->findById('fields', $id);
+    }
+
+    public static function update(array $item, int $id): void
+    {
+        Database::getInstance()->update('fields', $item, $id );
+    }
 }
