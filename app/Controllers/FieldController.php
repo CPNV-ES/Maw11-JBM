@@ -53,6 +53,19 @@ class FieldController
             exit;
         }
 
-        return view('exercises/create.php');
+        return view('exercises/edit.php');
+    }
+
+    public function delete()
+    {
+        if (!empty($_POST['field_id'])) {
+
+            Field::delete($_POST['field_id']);
+
+            header('Location: ' . '/exercises/' . $_POST['exercise_id'] . '/fields');
+            exit;
+        }
+        
+        return view('exercises/edit.php');
     }
 }
