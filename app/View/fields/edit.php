@@ -10,19 +10,20 @@ $labelTitle = $exercise['title'];
         <input type="hidden" name="exercise_id" value="<?= $exercise['id'] ?>">
         <div class="field">
             <label for="field_label">Label</label>
-            <input type="text" value="<?= $field['label'] ?>" name="field_label" id="field_label">
+            <input class="input" value="<?= $field['label'] ?>" type="text" name="field_label" id="field_label"/>
         </div>
         <div class="field">
             <label for="field_value_kind">Value kind</label>
             <select name="field_value_kind" id="field_value_kind">
-                <option selected="selected" value="<?= $field['value_kind'] ?>"><?= $field['value_kind'] ?></option>
-                <option selected="selected" value="single_line">Single line text</option>
-                <option value="single_line_list">List of single lines</option>
-                <option value="multi_line">Multi-line text</option>
+                <?php foreach ($allowedKinds as $kind): ?>
+                    <option value="<?= htmlspecialchars($kind, ENT_QUOTES) ?>" <?= $kind === $field['value_kind'] ? 'selected' : '' ?> >
+                        <?= $kind ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>
         <div class="actions">
-            <input type="submit" name="commit" value="Update Field" data-disable-with="Update Field">
+            <input class="button" type="submit" name="commit" value="Update Field" data-disable-with="Update Field">
         </div>
     </form>
 </div>
