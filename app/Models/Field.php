@@ -25,4 +25,13 @@ class Field
     {
         Database::getInstance()->update('fields', $item, $id );
     }
+    public static function delete(int $id): void
+    {
+        Database::getInstance()->deleteItem('fields', $id);
+    }
+
+    public static function getAllowedKinds(): array
+    {
+        return ['Single line text', 'List of single lines', 'Multi-line text'];
+    }
 }
