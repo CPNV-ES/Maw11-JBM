@@ -15,7 +15,7 @@ class Field
     {
         return Database::getInstance()->createItem('fields', $item);
     }
-    
+
     public static function find(int $id): array
     {
         return Database::getInstance()->findById('fields', $id);
@@ -23,8 +23,9 @@ class Field
 
     public static function update(array $item, int $id): void
     {
-        Database::getInstance()->update('fields', $item, $id );
+        Database::getInstance()->update('fields', $item, $id);
     }
+
     public static function delete(int $id): void
     {
         Database::getInstance()->deleteItem('fields', $id);

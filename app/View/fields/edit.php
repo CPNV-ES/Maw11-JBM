@@ -1,5 +1,5 @@
 <?php
-$title = 'New';
+$title      = 'New';
 $labelTitle = $exercise['title'];
 ?>
 <div class="container main">

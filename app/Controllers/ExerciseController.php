@@ -2,10 +2,10 @@
 
 namespace Maw11Jbm\Controllers;
 
-use Maw11Jbm\Models\Field;
 use function core\view;
 
 use Maw11Jbm\Models\Exercise;
+use Maw11Jbm\Models\Field;
 
 class ExerciseController
 {
@@ -86,7 +86,6 @@ class ExerciseController
         exit;
     }
 
-
     public function update(array $params): false|string
     {
 
@@ -96,5 +95,6 @@ class ExerciseController
         }
         Exercise::edit($exerciseId);
         header('Location: /exercises');
-        exit;    }
+        exit;
+    }
 }
