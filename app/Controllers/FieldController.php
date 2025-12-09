@@ -32,7 +32,8 @@ class FieldController
         
         return view('fields/edit.php', [
             'exercise' => $exercise,
-            'field' => $field
+            'field' => $field,
+            'allowedKinds' => Field::getAllowedKinds(),
         ]);
     }
 
