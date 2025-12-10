@@ -35,11 +35,11 @@ $labelTitle = $exercises['title'];
                             </form>
                         </td>
                         <td class="delete">
-                            <form action="/exercises/<?= $exercises['id'] . '/fields/' . $exercise['id'] ?>"
+                            <form action="/exercises/<?= htmlspecialchars($exercises['id'], ENT_QUOTES, 'UTF-8') . '/fields/' . htmlspecialchars($exercise['id'], ENT_QUOTES, 'UTF-8') ?>"
                                   method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="field_id" value="<?= $exercise['id'] ?>">
-                                <input type="hidden" name="exercise_id" value="<?= $exercises['id'] ?>">
+                                <input type="hidden" name="field_id" value="<?= htmlspecialchars($exercise['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                <input type="hidden" name="exercise_id" value="<?= htmlspecialchars($exercises['id'], ENT_QUOTES, 'UTF-8')?>">
                                 <button type="submit"
                                         class="btn btn-close btn-primary btn-small delete btn-context-text"
                                         aria-label="delete" role="button" data-context-text="Delete"
@@ -57,8 +57,7 @@ $labelTitle = $exercises['title'];
                 <?php endforeach; ?>
                 </tbody>
             </table>
-            <a class="button" rel="nofollow" data-method="put"><i class="fa fa-comment"></i> Complete and be ready for
-                answers</a>
+            <a class="button" rel="nofollow" data-method="put"><i class="fa fa-comment"></i> Complete and be ready for answers</a>
         </section>
         <section class="column">
             <h1>New Field</h1>
@@ -74,8 +73,8 @@ $labelTitle = $exercises['title'];
                     <label for="field_value_kind">Value kind</label>
                     <select name="field_value_kind" id="field_value_kind">
                         <?php foreach ($allowedKinds as $kind): ?>
-                            <option value="<?= htmlspecialchars($kind, ENT_QUOTES) ?>" <?= $kind === $field['value_kind'] ? 'selected' : '' ?> >
-                                <?= $kind ?>
+                            <option value="<?= htmlspecialchars($kind, ENT_QUOTES) ?>">
+                                <?= htmlspecialchars($kind, ENT_QUOTES)?>
                             </option>
                         <?php endforeach; ?>
                     </select>
