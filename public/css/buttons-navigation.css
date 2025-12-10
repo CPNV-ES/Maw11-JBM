@@ -1,45 +1,24 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+@import "tailwindcss";
+
 .button {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-    cursor: pointer;
+    @apply flex-1 inline-flex items-center justify-center gap-3 text-base font-[bold] text-white no-underline cursor-pointer min-h-[50px] bg-[#9b4dca] px-400 rounded-lg border-[none] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:bg-[rgba(36,36,36,0.8)] hover:text-white;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    min-height: 50px;
-    background-color: #9b4dca;
     font-family: "arial", sans-serif;
-}
-
-.button.purple {
-    background-color: #9b4dca;
-}
-
-.button.orange {
-    background-color: rgba(224, 164, 88, 1);
-}
-
-.button.green {
-    background-color: rgba(65, 157, 120, 1);
-}
-
-.button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    background-color: rgba(36, 36, 36, 0.8);
-    color: #ffffff;
-}
-
-.button svg {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
+  }
+  .button.purple {
+    @apply bg-[#9b4dca];
+  }
+  .button.orange {
+    @apply bg-[rgba(224,164,88,1)];
+  }
+  .button.green {
+    @apply bg-[rgba(65,157,120,1)];
+  }
+  .button svg {
+    @apply w-6 h-6;
+  }
