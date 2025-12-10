@@ -26,8 +26,6 @@ class ResultController
             foreach ($_POST as $key => $value) {
                 if(str_starts_with($key, 'answer')){
                     $fieldId = substr($key, strpos($key, "_") + 1);
-//                    var_dump('resultID ='.$resultId. 'fieldId'. $fieldId .'value'. $value);
-//                    exit;
                     Fulfillment::create([
                         'answer' => $value,
                         'fields_id' => $fieldId,
@@ -35,10 +33,35 @@ class ResultController
                     ]);
                 }
             }
-            header('Location: ' . '/exercises/answering');
+            header('Location: ' . '/exercises/'.$_POST['exercises_id'].'/fulfillments/'.$resultId.'/edit');
             exit;
         }
 
         return view('results/create.php');
+    }
+
+    public function edit(array $params): false|string
+    {
+        $exerciseId = (int) filter_var($params['id']);
+        $resultId = (int) filter_var($params['resultId']);
+
+        return view('results/edit.php', [
+            'exercise' => Exercise::allWithFields($exerciseId),
+            'result' => Result::allWithFulfillments($resultId)
+        ]);
+    }
+
+    public function update(): false|string
+    {
+        foreach ($_POST as $key => $value) {
+            if(str_starts_with($key, 'answer')){
+                $fulfillmentId = substr($key, strpos($key, "_") + 1);
+                Fulfillment::edit($fulfillmentId, [
+                    'answer' => $value,
+                ]);
+            }
+        }
+        header('Location: '.$_SERVER['REQUEST_URI']);
+        exit;
     }
 }
