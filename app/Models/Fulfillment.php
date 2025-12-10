@@ -15,4 +15,10 @@ class Fulfillment
     {
         return Database::getInstance()->createItem('fulfillments', $item);
     }
+
+    public static function edit($id, $data): void
+    {
+        Database::getInstance()->update('fulfillments',  $data, $id);
+    }
+
 }
