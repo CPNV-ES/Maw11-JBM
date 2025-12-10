@@ -13,7 +13,7 @@ $router->addRoute('GET', '/exercises/answering', [ExerciseController::class, 'in
 $router->addRoute('GET', '/exercises/new', [ExerciseController::class, 'create']);
 $router->addRoute('POST', '/exercises', [ExerciseController::class, 'store']);
 $router->addRoute('GET', '/exercises/{id}', [ExerciseController::class, 'show']);
-$router->addRoute('PUT', '/exercises/{id}', [ExerciseController::class, 'update']);
+$router->addRoute('PATCH', '/exercises/{id}', [ExerciseController::class, 'update']);
 $router->addRoute('GET', '/exercises/{exerciseId}/fields/{fieldId}', [FieldController::class, 'edit']);
 $router->addRoute('GET', '/exercises/{exerciseId}/fields', [ExerciseController::class, 'edit']);
 $router->addRoute('PATCH', '/exercises/{exerciseId}/fields/{fieldId}/edit', [FieldController::class, 'update']);
