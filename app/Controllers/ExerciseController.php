@@ -28,9 +28,7 @@ class ExerciseController
 
     public function indexTaking(): false|string
     {
-        $data = Exercise::all();
-
-        return view('exercises/index_take.php', $data);
+        return view('exercises/index_take.php',['exercises' => Exercise::answering()]);
     }
 
     /**

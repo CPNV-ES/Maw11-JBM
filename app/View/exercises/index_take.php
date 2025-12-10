@@ -1,8 +1,7 @@
 <?php $title = 'Answering' ?>
 <div class="container main">
     <ul>
-        <?php if (isset($data)) : ?>
-            <?php foreach ($data as $exercise): ?>
+            <?php foreach (($exercises ?? []) as $exercise): ?>
                 <li>
                     <div class="column card">
                         <div class="title"><?= $exercise['title'] ?></div>
@@ -16,6 +15,5 @@
                     </div>
                 </li>
             <?php endforeach; ?>
-        <?php endif; ?>
     </ul>
 </div>

@@ -16,9 +16,9 @@
                         <?php 
                             $icon = 'edit'; 
                             $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'test';
-                            $classes = 'test';
-                            $method = 'POST';
+                            $label = 'edit';
+                            $classes = 'edit';
+                            $method = 'PUT';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php

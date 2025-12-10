@@ -16,7 +16,8 @@ class Database
         $this->db = new PDO('sqlite:looper.db');
         $this->createTable('exercises', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'title TEXT NOT NULL', 'status TEXT NOT NULL']);
         $this->createTable('fields', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'label TEXT NOT NULL', 'value_kind INTEGER NOT NULL', 'exercises_id INTEGER NOT NULL', 'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
-        $this->createTable('results', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'result TEXT NOT NULL', 'fields_id INTEGER NOT NULL', 'FOREIGN KEY("fields_id") REFERENCES "fields"("id")']);
+        $this->createTable('results', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'result TEXT NOT NULL', 'exercises_id INTEGER NOT NULL','created_at DATETIME DEFAULT CURRENT_TIMESTAMP' ,'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
+        $this->createTable('fulfillments', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'answer TEXT NOT NULL', 'results_id INTEGER NOT NULL' ,'FOREIGN KEY("results_id") REFERENCES "results"("id")']);
     }
 
     public function createTable(string $tableName, array $columns): void
@@ -45,16 +46,6 @@ class Database
 
     public function createItem($tablename, $item): int
     {
-//        foreach ($item as $key => $value) {
-//            $columns[] = $key;
-//            $values[] = "'$value'";
-//        }
-//        $columnsString = implode(", ", $columns);
-//        $valuesString = implode(", ", $values);
-//        $request = $this->db->prepare("INSERT INTO $tablename ($columnsString) VALUES ($valuesString)");
-//        $this->db->exec($request);
-//        return $this->db->lastInsertId();
-
         foreach ($item as $key => $value) {
             $columns[] = $key;
             $values[] = "'$value'";

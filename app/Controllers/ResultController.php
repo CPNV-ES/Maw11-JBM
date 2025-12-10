@@ -19,12 +19,17 @@ class ResultController
     }
     public function store(): false|string
     {
-        if (!empty($_POST['result'])) {
-            Result::create([
-                'result'   => $_POST['result'],
-                'fields_id' => $_POST['fields_id'],
-            ]);
-            header('Location: ' . $_SERVER['REQUEST_URI']);
+        if (!empty($_POST)) {
+            foreach ($_POST as $key => $value) {
+                if(str_starts_with($key, 'result')){
+                    $fieldId = substr($key, strpos($key, "_") + 1);
+                    Result::create([
+                    'result'   => $value,
+                    'fields_id' => $fieldId,
+                ]);
+                }
+            }
+            header('Location: ' . '/exercises/answering');
             exit;
         }
 
