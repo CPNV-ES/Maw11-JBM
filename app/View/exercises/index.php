@@ -60,8 +60,8 @@
                         <?php
                             $icon = 'close';
                             $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'test';
-                            $classes = 'test';
+                            $label = 'close';
+                            $classes = 'close';
                             $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
