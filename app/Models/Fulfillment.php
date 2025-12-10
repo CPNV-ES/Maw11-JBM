@@ -4,7 +4,7 @@ namespace Maw11Jbm\Models;
 
 use core\Database;
 
-class fulfillment
+class Fulfillment
 {
     public static function all(): array
     {
