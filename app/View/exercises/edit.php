@@ -38,8 +38,10 @@ $labelTitle = $exercises['title'];
                             <form action="/exercises/<?= htmlspecialchars($exercises['id'], ENT_QUOTES, 'UTF-8') . '/fields/' . htmlspecialchars($exercise['id'], ENT_QUOTES, 'UTF-8') ?>"
                                   method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="field_id" value="<?= htmlspecialchars($exercise['id'], ENT_QUOTES, 'UTF-8') ?>">
-                                <input type="hidden" name="exercise_id" value="<?= htmlspecialchars($exercises['id'], ENT_QUOTES, 'UTF-8')?>">
+                                <input type="hidden" name="field_id"
+                                       value="<?= htmlspecialchars($exercise['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                <input type="hidden" name="exercise_id"
+                                       value="<?= htmlspecialchars($exercises['id'], ENT_QUOTES, 'UTF-8') ?>">
                                 <button type="submit"
                                         class="btn btn-close btn-primary btn-small delete btn-context-text"
                                         aria-label="delete" role="button" data-context-text="Delete"
@@ -57,13 +59,24 @@ $labelTitle = $exercises['title'];
                 <?php endforeach; ?>
                 </tbody>
             </table>
-            <a class="button" rel="nofollow" data-method="put"><i class="fa fa-comment"></i> Complete and be ready for answers</a>
+            <?php if (!empty($exercises['fields'])): ?>
+                <form action="/exercises/<?= htmlspecialchars($exercises['id'], ENT_QUOTES, 'UTF-8') ?>"
+                      method="POST">
+                    <input type="hidden" name="_method" value="PATCH">
+                    <input type="hidden" name="status" value="answering">
+                    <button type="submit"
+                            class="button"
+                            role="button"
+                            onclick="return confirm('Are you sure ? You won\'t be able to further edit this exercise')">
+                        <i class="fa fa-comment"></i> Complete and be ready for answers
+                    </button>
+                </form>
+            <?php endif; ?>
         </section>
         <section class="column">
             <h1>New Field</h1>
             <form action="/exercises/<?= $exercises['id'] . '/fields' ?>" accept-charset="UTF-8" method="POST">
                 <input name="utf8" type="hidden"/>
-                <input type="hidden" name="authenticity_token"/>
                 <div class="field">
                     <label for="field_label">Label</label>
                     <input type="text" name="field_label" id="field_label" required/>
@@ -74,7 +87,7 @@ $labelTitle = $exercises['title'];
                     <select name="field_value_kind" id="field_value_kind">
                         <?php foreach ($allowedKinds as $kind): ?>
                             <option value="<?= htmlspecialchars($kind, ENT_QUOTES) ?>">
-                                <?= htmlspecialchars($kind, ENT_QUOTES)?>
+                                <?= htmlspecialchars($kind, ENT_QUOTES) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

@@ -23,18 +23,15 @@ $colorClass = "btn-{$color}";
             role="button"
             <?= $confirm ? 'onclick="return confirm(\'' . htmlspecialchars($confirmText, ENT_QUOTES, 'UTF-8') . '\')"' : '' ?>
     >
-
         <?php if ($icon === 'close'): ?>
             <!-- Close icon -->
-            <input type="hidden" name="_method" value="put">
+            <input type="hidden" name="_method" value="PATCH"/>
             <input id="status" value="closed" type="hidden" name="status"/>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
             </svg>
-
-
         <?php elseif ($icon === 'edit'): ?>
             <!-- Edit icon -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
