@@ -12,6 +12,8 @@ $router->addRoute('GET', '/', [HomeController::class, 'index']);
 $router->addRoute('GET', '/exercises', [ExerciseController::class, 'index']);
 $router->addRoute('GET', '/exercises/answering', [ExerciseController::class, 'indexTaking']);
 $router->addRoute('GET', '/exercises/new', [ExerciseController::class, 'create']);
+$router->addRoute('GET', '/exercises/{id}/fulfillments/{resultId}/edit', [ResultController::class, 'edit']);
+$router->addRoute('PUT', '/exercises/{id}/fulfillments/{resultId}/edit', [ResultController::class, 'update']);
 $router->addRoute('POST', '/exercises', [ExerciseController::class, 'store']);
 $router->addRoute('GET', '/exercises/{id}/fulfillments/new', [ResultController::class, 'create']);
 $router->addRoute('GET', '/exercises/{id}', [ExerciseController::class, 'show']);
