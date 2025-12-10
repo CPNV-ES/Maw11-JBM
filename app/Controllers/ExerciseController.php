@@ -5,6 +5,7 @@ namespace Maw11Jbm\Controllers;
 use function core\view;
 
 use Maw11Jbm\Models\Exercise;
+use Maw11Jbm\Models\Field;
 
 class ExerciseController
 {
@@ -38,7 +39,7 @@ class ExerciseController
      */
     public function edit(array $params): false|string
     {
-        $id       = (int) $params['id'];
+        $id       = (int) $params['exerciseId'];
         $exercise = Exercise::find($id);
 
         if (!$exercise) {
@@ -47,7 +48,7 @@ class ExerciseController
             return 'Exercice introuvable';
         }
 
-        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id)]);
+        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id), 'allowedKinds' => Field::getAllowedKinds()]);
     }
 
     /**
@@ -85,7 +86,6 @@ class ExerciseController
         exit;
     }
 
-
     public function update(array $params): false|string
     {
 
@@ -95,5 +95,6 @@ class ExerciseController
         }
         Exercise::edit($exerciseId);
         header('Location: /exercises');
-        exit;    }
+        exit;
+    }
 }
