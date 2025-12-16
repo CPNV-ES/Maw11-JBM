@@ -24,7 +24,7 @@ class ExerciseController
             return 'Invalid exercise ID';
         }
 
-        return view('exercises/create.php', ['exercise' => Exercise::find($exerciseId)]);
+        return view('exercises/show.php', ['exercise' => Exercise::find($exerciseId)]);
     }
 
     public function indexTaking(): false|string
