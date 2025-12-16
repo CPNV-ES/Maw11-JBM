@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/exercises.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/home-page.css">
+    <link rel="stylesheet" href="/css/buttons-action.css">
 </head>
 <body>
 <?php if (!empty($labelTitle)): ?>

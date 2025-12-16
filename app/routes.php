@@ -17,9 +17,12 @@ $router->addRoute('PUT', '/exercises/{id}/fulfillments/{resultId}/edit', [Result
 $router->addRoute('POST', '/exercises', [ExerciseController::class, 'store']);
 $router->addRoute('GET', '/exercises/{id}/fulfillments/new', [ResultController::class, 'create']);
 $router->addRoute('GET', '/exercises/{id}', [ExerciseController::class, 'show']);
-$router->addRoute('PUT', '/exercises/{id}', [ExerciseController::class, 'update']);
-$router->addRoute('GET', '/exercises/{id}/fields', [ExerciseController::class, 'edit']);
+$router->addRoute('PATCH', '/exercises/{id}', [ExerciseController::class, 'update']);
+$router->addRoute('GET', '/exercises/{exerciseId}/fields/{fieldId}', [FieldController::class, 'edit']);
+$router->addRoute('GET', '/exercises/{exerciseId}/fields', [ExerciseController::class, 'edit']);
+$router->addRoute('PATCH', '/exercises/{exerciseId}/fields/{fieldId}/edit', [FieldController::class, 'update']);
 $router->addRoute('POST', '/exercises/{id}/fields', [FieldController::class, 'store']);
 $router->addRoute('POST', '/exercises/{id}', [ExerciseController::class, 'delete']);
 $router->addRoute('POST', '/exercises/{id}/results', [ResultController::class, 'store']);
-
+$router->addRoute('DELETE', '/exercises/{exerciseId}/fields/{fieldId}', [FieldController::class, 'delete']);
+$router->addRoute('POST', '/exercises/{id}', [ExerciseController::class, 'delete']);

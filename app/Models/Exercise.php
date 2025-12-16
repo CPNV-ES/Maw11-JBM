@@ -7,8 +7,6 @@ use Illuminate\Support\Collection;
 
 class Exercise
 {
-    private string $id;
-
     private string $title;
 
     private string $status;
@@ -19,11 +17,10 @@ class Exercise
         $this->status = $status;
     }
 
-
     /**
      * @return array<int, Exercise>
      */
-    public static function all() : array
+    public static function all(): array
     {
         return Database::getInstance()->getAll('exercises');
     }
@@ -96,27 +93,29 @@ class Exercise
     {
         return Database::getInstance()->getAll('exercises', 'status', 'closed');
     }
+
     /**
      * @param int $id
      */
     public static function edit($id): void
     {
         $data = self::extractEditedAttributes($_POST);
-        Database::getInstance()->update('exercises',  $data, $id);
+        Database::getInstance()->update('exercises', $data, $id);
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed> $data
      * @return array<string, mixed>
      */
     public static function extractEditedAttributes($data): array
     {
         $extractedData = [];
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             if (property_exists(self::class, $key)) {
                 $extractedData[$key] = $value;
             }
         }
+
         return $extractedData;
     }
 

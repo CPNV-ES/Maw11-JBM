@@ -22,14 +22,22 @@
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
-                            $icon = 'delete';
-                            $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'delete'; 
-                            $classes = 'delete'; 
-                            $method = 'POST';
-                            $confirm = true;
-                        include __DIR__ . '/../../../core/buttons/action.php';
-                        ?>
+                            $icon = 'edit';
+                $href             = '/exercises/' . ($value['id'] ?? '');
+                $label            = 'test';
+                $classes          = 'test';
+                $method           = 'POST';
+                include __DIR__ . '/../../../core/buttons/action.php';
+                ?>
+                        <?php
+                    $icon = 'delete';
+                $href     = '/exercises/' . ($value['id'] ?? '');
+                $label    = 'delete';
+                $classes  = 'delete';
+                $method   = 'POST';
+                $confirm  = true;
+                include __DIR__ . '/../../../core/buttons/action.php';
+                ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -49,14 +57,6 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php 
-                            $icon = 'stats'; 
-                            $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'test';
-                            $classes = 'test';
-                            $method = 'POST';
-                            include __DIR__ . '/../../../core/buttons/action.php';
-                        ?>
                         <?php
                             $icon = 'close';
                             $href = '/exercises/' . ($value['id'] ?? '');
@@ -65,6 +65,7 @@
                             $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
+
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -84,23 +85,23 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php 
-                            $icon = 'stats'; 
-                            $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'test';
-                            $classes = '';
-                            $method = '';
-                            include __DIR__ . '/../../../core/buttons/action.php';
-                        ?>
                         <?php
-                            $icon = 'delete';
-                            $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'delete';
-                            $classes = 'delete'; 
-                            $method = 'POST';
-                            $confirm = true;
-                            include __DIR__ . '/../../../core/buttons/action.php'; 
-                        ?>
+                    $icon = 'stats';
+                $href     = '/exercises/' . ($value['id'] ?? '');
+                $label    = 'test';
+                $classes  = '';
+                $method   = '';
+                include __DIR__ . '/../../../core/buttons/action.php';
+                ?>
+                        <?php
+                    $icon = 'delete';
+                $href     = '/exercises/' . ($value['id'] ?? '');
+                $label    = 'delete';
+                $classes  = 'delete';
+                $method   = 'POST';
+                $confirm  = true;
+                include __DIR__ . '/../../../core/buttons/action.php';
+                ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
