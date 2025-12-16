@@ -18,7 +18,7 @@
                             $href = '/exercises/' . ($value['id'] ?? '');
                             $label = 'edit';
                             $classes = 'edit';
-                            $method = 'PUT';
+                            $method = 'PATCH';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
