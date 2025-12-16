@@ -24,6 +24,7 @@ class FieldController
         return view('exercises/create.php');
     }
 
+
     public function edit(array $params): false|string
     {
         $exercise = Exercise::find($params['exerciseId']);

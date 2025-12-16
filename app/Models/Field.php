@@ -16,6 +16,7 @@ class Field
         return Database::getInstance()->createItem('fields', $item);
     }
 
+
     public static function find(int $id): array
     {
         return Database::getInstance()->findById('fields', $id);

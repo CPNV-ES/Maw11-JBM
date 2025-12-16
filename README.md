@@ -60,7 +60,7 @@ How to deploy the application outside the dev environment.
 │ ├── routes.php                                                                                                                                                                    
 │ └── View
 │   └── exercises                                                                                                                                                                          
-│   ├── show.php                                                                                                                                                              
+│   ├── create.php                                                                                                                                                              
 │   ├── index.php                                                                                                                                                             
 │ ├── home.php                                                                                                                                                             
 │ └── user.php

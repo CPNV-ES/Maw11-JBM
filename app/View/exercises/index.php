@@ -13,6 +13,14 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
+                        <?php 
+                            $icon = 'edit'; 
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'edit';
+                            $classes = 'edit';
+                            $method = 'PUT';
+                            include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
                         <?php
                             $icon = 'edit';
                 $href             = '/exercises/' . ($value['id'] ?? '');
@@ -50,21 +58,14 @@
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
                         <?php
-                    $icon = 'stats';
-                $href     = '/exercises/' . ($value['id'] ?? '');
-                $label    = 'test';
-                $classes  = 'test';
-                $method   = 'POST';
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
-                        <?php
-                    $icon = 'close';
-                $href     = '/exercises/' . ($value['id'] ?? '');
-                $label    = 'test';
-                $classes  = 'test';
-                $method   = 'POST';
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
+                            $icon = 'close';
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'close';
+                            $classes = 'close';
+                            $method = 'POST';
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
+
                     </td>
                 </tr>
             <?php endforeach; ?>
