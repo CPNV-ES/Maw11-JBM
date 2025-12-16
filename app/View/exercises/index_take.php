@@ -4,7 +4,7 @@
             <?php foreach (($exercises ?? []) as $exercise): ?>
                 <li>
                     <div class="column card">
-                        <div class="title"><?= $exercise['title'] ?></div>
+                        <div class="title"><?= htmlspecialchars($exercise['title'], ENT_QUOTES, 'UTF-8') ?></div>
                         <?php
                         $href = '/exercises/' . $exercise['id']. '/fulfillments/new';
                         $color            = 'purple';

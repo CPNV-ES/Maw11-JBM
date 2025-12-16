@@ -11,7 +11,7 @@
                 <div class="field">
                     <label for="answer_<?=$field['id']?>"><?= $field['label'] ?></label>
                     <input value="<?=$fulfillment['answer'] ?>" type="text" name="answer_<?=$fulfillment['id']?>" id="answer_<?=$field['id']?>">
-                    </div>
+                </div>
                 <?php endif; ?>
                 <?php endforeach; ?>
         <?php endforeach; ?>

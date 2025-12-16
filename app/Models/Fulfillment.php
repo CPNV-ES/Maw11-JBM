@@ -11,12 +11,19 @@ class Fulfillment
         return Database::getInstance()->getAll('fulfillments');
     }
 
+    /**
+     * @param array<string, mixed> $item
+     */
     public static function create(array $item): int
     {
         return Database::getInstance()->createItem('fulfillments', $item);
     }
 
-    public static function edit($id, $data): void
+    /**
+     * @param int $id
+     * @param array<string, mixed> $data
+     */
+    public static function edit(int $id, array $data): void
     {
         Database::getInstance()->update('fulfillments',  $data, $id);
     }

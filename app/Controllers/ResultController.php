@@ -57,7 +57,7 @@ class ResultController
             if(str_starts_with($key, 'answer')){
                 $fulfillmentId = substr($key, strpos($key, "_") + 1);
                 Fulfillment::edit($fulfillmentId, [
-                    'answer' => $value,
+                    'answer' => htmlspecialchars($value, ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
