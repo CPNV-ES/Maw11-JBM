@@ -14,7 +14,7 @@ class Router
         $this->routes[$method][$pattern] = $callback;
     }
 
-    public function resolve(): void
+    public function resolve(): false|string
     {
     $method = $_SERVER['REQUEST_METHOD'];
     
@@ -35,16 +35,15 @@ class Router
 
             if (is_array($callback)) {
                 [$class, $method] = $callback;
-                echo new $class()->$method($params);
-            } else {
-                echo $callback($params);
+                return new $class()->$method($params);
             }
-            return;
+
+            return $callback($params);
         }
     }
 
     http_response_code(404);
-    echo "404 Not Found";
+    return view('errors/404.php');
 }
 
 

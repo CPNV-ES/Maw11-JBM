@@ -6,6 +6,7 @@ use function core\view;
 
 use Maw11Jbm\Models\Exercise;
 use Maw11Jbm\Models\Field;
+use Throwable;
 
 class ExerciseController
 {
@@ -24,8 +25,17 @@ class ExerciseController
     public function show(array $params): false|string
     {
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+
         if ($exerciseId === false) {
-            return 'Invalid exercise ID';
+            http_response_code(400);
+            return view('errors/400.php', ['message' => 'Invalid exercise ID']);
+        }
+
+        try {
+            $exercise = Exercise::find($exerciseId);
+        } catch (Throwable $e) {
+            http_response_code(404);
+            return view('errors/404.php', ['message' => 'Exercise not found']);
         }
 
         return view('exercises/create.php', ['exercise' => Exercise::find($exerciseId)]);
@@ -41,13 +51,13 @@ class ExerciseController
      */
     public function edit(array $params): false|string
     {
-        $id       = (int) $params['exerciseId'];
-        $exercise = Exercise::find($id);
+        $id = (int)$params['exerciseId'];
 
-        if (!$exercise) {
+        try {
+            Exercise::find($id);
+        } catch (Throwable $e) {
             http_response_code(404);
-
-            return 'Exercice introuvable';
+            return view('errors/404.php', ['message' => 'Exercise not found.']);
         }
 
         return view('exercises/edit.php', ['exercises' => Exercise::findWithFields($id), 'allowedKinds' => Field::getAllowedKinds()]);
@@ -77,12 +87,19 @@ class ExerciseController
 
     public function delete(array $params): false|string
     {
-
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
+
         if ($exerciseId === false) {
-            return 'Invalid exercise ID';
+            http_response_code(400);
+            return view('errors/400.php', ['message' => 'Invalid exercise ID']);
         }
-        Exercise::delete($exerciseId);
+
+        try {
+            Exercise::delete($exerciseId);
+        } catch (Throwable $e) {
+            http_response_code(404);
+            return view('errors/404.php', ['message' => 'Exercise not found']);
+        }
 
         header('Location: /exercises');
         exit;
@@ -90,7 +107,6 @@ class ExerciseController
 
     public function update(array $params): false|string
     {
-
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
         if ($exerciseId === false) {
             return 'Invalid exercise ID';
