@@ -58,6 +58,8 @@ $colorClass = "btn-{$color}";
 
         <?php elseif ($icon === 'takeIt'): ?>
             <!-- TakeIt icon -->
+            <input type="hidden" name="_method" value="PATCH"/>
+            <input id="status" value="answering" type="hidden" name="status"/>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"

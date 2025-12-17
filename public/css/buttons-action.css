@@ -23,6 +23,12 @@
     font-size: 0.875rem;
 }
 
+.btn svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    flex-shrink: 0;
+}
+
 /* colors */
 .btn-primary {
     color: #9b4dca;
