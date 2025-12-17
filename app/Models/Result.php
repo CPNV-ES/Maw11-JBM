@@ -131,5 +131,51 @@ class Result
             ];
     }
 
+    public static function findWithExerciseAndFulfillments(int $exerciseId, int $resultId): array
+    {
+        $rows = Database::getInstance()->fetchAllWithJoins(
+            'results r',
+            [
+                [
+                    'type'  => 'INNER',
+                    'table' => 'exercises e',
+                    'on'    => 'r.exercises_id = e.id',
+                ],
+                [
+                    'type'  => 'LEFT',
+                    'table' => 'fulfillments f',
+                    'on'    => 'f.results_id = r.id',
+                ],
+                [
+                    'type'  => 'LEFT',
+                    'table' => 'fields fi',
+                    'on'    => 'f.fields_id = fi.id',
+                ],
+            ],
+            'r.id = :resultId AND e.id = :exerciseId',
+            ['resultId' => $resultId, 'exerciseId' => $exerciseId],
+            'e.title AS exercise_title, r.created_at AS result_date, f.id AS fulfillment_id, f.answer, fi.label AS field_label'
+        );
+        return self::mapResultWithExerciseAndFulfillments($rows);
+    }
 
+    private static function mapResultWithExerciseAndFulfillments(Collection|array $rows): array
+    {
+        $rows = collect($rows);
+
+        if ($rows->isEmpty()) {
+            return [];
+        }
+
+        $first = $rows->first();
+
+        return [
+            'exercise_title' => $first['exercise_title'],
+            'result_date'    => $first['result_date'],
+            'fulfillments'   => $rows->whereNotNull('fulfillment_id')->map(fn ($r) => [
+                'answer'      => $r['answer'],
+                'field_label' => $r['field_label'],
+            ])->values()->all(),
+        ];
+    }
 }

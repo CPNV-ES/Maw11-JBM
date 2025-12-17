@@ -9,6 +9,12 @@ use function core\view;
 
 class ResultController
 {
+    public function show(array $params): false|string
+    {
+        $results = Result::findWithExerciseAndFulfillments($params['exerciseId'], $params['resultId']);
+
+        return view('results/show.php', ['results' => $results]);
+    }
 
     public function index(array $params): false|string {
         $exerciseId = filter_var($params['id']);
@@ -20,7 +26,7 @@ class ResultController
     {
         $exerciseId = filter_var($params['id']);
         return view('results/create.php', [
-            'exercise' => Exercise::allWithFields($exerciseId)
+            'exercise' => Exercise::findWithFields($exerciseId)
                 ]);
     }
     public function store(): false|string
@@ -52,7 +58,7 @@ class ResultController
         $resultId = (int) filter_var($params['resultId']);
 
         return view('results/edit.php', [
-            'exercise' => Exercise::allWithFields($exerciseId),
+            'exercise' => Exercise::findWithFields($exerciseId),
             'result' => Result::allWithFulfillments($resultId)
         ]);
     }

@@ -9,35 +9,40 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($buildings ?? []) as $value): ?>
+            <?php foreach (($exercises['building'] ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php 
-                            $icon = 'edit'; 
+                        <?php if (!empty($value['fields'])){
+                            $icon = 'takeIt';
                             $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'edit';
+                            $label = 'Be ready for answers';
+                            $classes = 'takeIt';
+                            $method = 'POST';
+                            $confirm = false;
+                            $color = 'primary';
+                            include __DIR__ . '/../../../core/buttons/action.php';
+                        } ?>
+                        <?php
+                            $icon = 'edit';
+                            $href = '/exercises/' . ($value['id'] ?? '') . '/fields';
+                            $label = 'Edit';
                             $classes = 'edit';
-                            $method = 'PATCH';
+                            $method = 'GET';
+                            $confirm  = false;
+                            $color = 'primary';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
-                            $icon = 'edit';
-                $href             = '/exercises/' . ($value['id'] ?? '');
-                $label            = 'test';
-                $classes          = 'test';
-                $method           = 'POST';
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
-                        <?php
-                    $icon = 'delete';
-                $href     = '/exercises/' . ($value['id'] ?? '');
-                $label    = 'delete';
-                $classes  = 'delete';
-                $method   = 'POST';
-                $confirm  = true;
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
+                            $icon = 'delete';
+                            $href     = '/exercises/' . ($value['id'] ?? '');
+                            $label    = 'delete';
+                            $classes  = 'delete';
+                            $method   = 'POST';
+                            $confirm  = true;
+                            $color = 'danger';
+                            include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -53,17 +58,19 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($answerings ?? []) as $value): ?>
+            <?php foreach (($exercises['answering'] ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
                         <?php
-                        $icon = 'stats';
-                        $href = '/exercises/' . ($value['id'] ?? '') .'/results';
-                        $label = 'Show results';
-                        $classes = 'stats';
-                        $method = 'GET';
-                        include __DIR__ . '/../../../core/buttons/action.php';
+                            $icon = 'stats';
+                            $href = '/exercises/' . ($value['id'] ?? '') . '/results';
+                            $label = 'Show results';
+                            $classes = 'stats';
+                            $method = 'GET';
+                            $color = 'primary';
+                            $confirm = false;
+                            include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
                             $icon = 'close';

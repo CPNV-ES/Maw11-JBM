@@ -25,7 +25,30 @@ class Exercise
         return Database::getInstance()->getAll('exercises');
     }
 
-    public static function allWithFields(int $id): array
+    public static function allWithFields(): array
+    {
+        $rows = Database::getInstance()->fetchAllWithJoins(
+            'exercises e',
+            [
+                [
+                    'type'  => 'LEFT',
+                    'table' => 'fields f',
+                    'on'    => 'f.exercises_id = e.id',
+                ],
+            ],
+            null,
+            [],
+            'e.id AS exercise_id, e.title, e.status, f.id AS field_id, f.label, f.value_kind'
+        );
+
+        return $rows->groupBy('exercise_id')
+            ->map(fn ($group) => self::mapExerciseWithFields($group))
+            ->groupBy('status')
+            ->map(fn ($group) => $group->values())
+            ->toArray();
+    }
+
+    public static function findWithFields(int $id): array
     {
         $rows = Database::getInstance()->fetchAllWithJoins(
             'exercises e',
@@ -113,11 +136,11 @@ class Exercise
             'field_id'  => $first['field_id'],
             'label'      => $first['label'],
             'value_kind' => $first['value_kind'],
-            'results_id' => $first['results_id'],
             'answers'    => $rows->whereNotNull('value')
                 ->map(fn ($r) => [
                     'value'      => $r['value'],
                     'created_at' => $r['created_at'] ?? null,
+                    'results_id' => $r['results_id'],
                 ])->values()->all(),
         ];
     }
