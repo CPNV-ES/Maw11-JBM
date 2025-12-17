@@ -23,10 +23,10 @@
                         ?>
                         <?php 
                             $icon = 'edit'; 
-                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $href = '/exercises/' . ($value['id'] ?? '') . '/fields';
                             $label = 'Edit';
                             $classes = 'edit';
-                            $method = 'PUT';
+                            $method = 'GET';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
