@@ -6,7 +6,7 @@ $labelTitle  = $results['exercise_id']; ?>
     <tr>
       <th>Take</th>
         <?php foreach ($results['fields'] as $field): ?>
-        <th><a href="<?= '/exercises/' . $results['id'] . '/results/' . $field['id']?>"><?= htmlspecialchars($field['label']) ?></a></th>
+        <th><a href="<?= '/exercises/' . $results['exercise_id'] . '/results/' . $field['id']?>"><?= htmlspecialchars($field['label']) ?></a></th>
         <?php endforeach; ?>
     </tr>
   </thead>
