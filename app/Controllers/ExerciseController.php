@@ -50,7 +50,7 @@ class ExerciseController
     }
 
     /**
-     * @param array<string, int | string> $params
+     * @return false|string
      */
     public function create(): false|string
     {
