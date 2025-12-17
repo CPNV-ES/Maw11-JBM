@@ -58,6 +58,14 @@
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
                         <?php
+                        $icon = 'stats';
+                        $href = '/exercises/' . ($value['id'] ?? '') .'/results';
+                        $label = 'Show results';
+                        $classes = 'stats';
+                        $method = 'GET';
+                        include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
+                        <?php
                             $icon = 'close';
                             $href = '/exercises/' . ($value['id'] ?? '');
                             $label = 'close';
