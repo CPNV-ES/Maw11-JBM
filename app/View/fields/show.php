@@ -14,8 +14,8 @@ $labelTitle = $exercise['title'];
         <tbody>
         <?php foreach ($exercise['answers'] as $result): ?>
         <tr>
-            <td><a href="<?= htmlspecialchars("/exercises/". $exercise['id'] . "/fulfillments/". $exercise['results_id'])?>"><?= $result['created_at'] ?></a></td>
-            <td class="result_value"><?= $result['value'] ?></td>
+            <td><a href="<?= htmlspecialchars("/exercises/". $exercise['id'] . "/fulfillments/". $exercise['results_id'], ENT_QUOTES, 'UTF-8')?>"><?= $result['created_at'] ?></a></td>
+            <td class="result_value"><?= htmlspecialchars($result['value'], ENT_QUOTES, 'UTF-8' )?></td>
         </tr>
         <?php endforeach; ?>
         </tbody>
