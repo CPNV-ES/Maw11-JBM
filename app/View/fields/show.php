@@ -1,5 +1,5 @@
 <?php
-$title = 'exercises';
+$title      = 'exercises';
 $labelTitle = $exercise['title'];
 ?>
 <div class="container main">
@@ -14,8 +14,8 @@ $labelTitle = $exercise['title'];
         <tbody>
         <?php foreach ($exercise['answers'] as $result): ?>
         <tr>
-            <td><a href="<?= htmlspecialchars("/exercises/". $exercise['id'] . "/fulfillments/". $result['results_id'], ENT_QUOTES, 'UTF-8')?>"><?= $result['created_at'] ?></a></td>
-            <td class="result_value"><?= htmlspecialchars($result['value'], ENT_QUOTES, 'UTF-8' )?></td>
+            <td><a href="<?= htmlspecialchars('/exercises/' . $exercise['id'] . '/fulfillments/' . $result['results_id'], ENT_QUOTES, 'UTF-8')?>"><?= $result['created_at'] ?></a></td>
+            <td class="result_value"><?= htmlspecialchars($result['value'], ENT_QUOTES, 'UTF-8')?></td>
         </tr>
         <?php endforeach; ?>
         </tbody>

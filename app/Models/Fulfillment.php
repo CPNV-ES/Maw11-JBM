@@ -20,12 +20,11 @@ class Fulfillment
     }
 
     /**
-     * @param int $id
+     * @param int                  $id
      * @param array<string, mixed> $data
      */
     public static function edit(int $id, array $data): void
     {
-        Database::getInstance()->update('fulfillments',  $data, $id);
+        Database::getInstance()->update('fulfillments', $data, $id);
     }
-
 }

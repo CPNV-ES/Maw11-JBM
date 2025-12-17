@@ -15,7 +15,7 @@ class ExerciseController
         $exercises = Exercise::allWithFields();
 
         return view('exercises/index.php', [
-            'exercises'  => $exercises
+            'exercises'  => $exercises,
         ]);
     }
 
@@ -28,6 +28,7 @@ class ExerciseController
 
         if ($exerciseId === false) {
             http_response_code(400);
+
             return view('errors/400.php', ['message' => 'Invalid exercise ID']);
         }
 
@@ -35,6 +36,7 @@ class ExerciseController
             $exercise = Exercise::find($exerciseId);
         } catch (Throwable $e) {
             http_response_code(404);
+
             return view('errors/404.php', ['message' => 'Exercise not found']);
         }
 
@@ -43,7 +45,7 @@ class ExerciseController
 
     public function indexTaking(): false|string
     {
-        return view('exercises/index_take.php',['exercises' => Exercise::answering()]);
+        return view('exercises/index_take.php', ['exercises' => Exercise::answering()]);
     }
 
     /**
@@ -51,12 +53,13 @@ class ExerciseController
      */
     public function edit(array $params): false|string
     {
-        $id = (int)$params['exerciseId'];
+        $id = (int) $params['exerciseId'];
 
         try {
             Exercise::find($id);
         } catch (Throwable $e) {
             http_response_code(404);
+
             return view('errors/404.php', ['message' => 'Exercise not found.']);
         }
 
@@ -91,6 +94,7 @@ class ExerciseController
 
         if ($exerciseId === false) {
             http_response_code(400);
+
             return view('errors/400.php', ['message' => 'Invalid exercise ID']);
         }
 
@@ -98,6 +102,7 @@ class ExerciseController
             Exercise::delete($exerciseId);
         } catch (Throwable $e) {
             http_response_code(404);
+
             return view('errors/404.php', ['message' => 'Exercise not found']);
         }
 

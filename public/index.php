@@ -1,7 +1,7 @@
 <?php
+
 namespace core;
-use core\Database;
-use core\Router;
+
 use Throwable;
 
 const BASE_DIR = __DIR__ . '/..';
@@ -20,5 +20,6 @@ try {
     echo $output;
 } catch (Throwable $e) {
     http_response_code(500);
+
     return view('errors/500.php', ['message' => $e->getMessage()]);
 }
