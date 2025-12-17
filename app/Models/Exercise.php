@@ -44,6 +44,29 @@ class Exercise
         return self::mapExerciseWithFields($rows);
     }
 
+    public static function findWithFieldAndFulfillments(int $exerciseId, int $fieldId): array
+    {
+        $rows = Database::getInstance()->fetchAllWithJoins(
+            'exercises e',
+            [
+                [
+                    'type'  => 'INNER',
+                    'table' => 'fields f',
+                    'on'    => 'f.exercises_id = e.id',
+                ],
+                [
+                    'type'  => 'LEFT',
+                    'table' => 'fulfillments ful',
+                    'on'    => 'ful.fields_id = f.id',
+                ],
+            ],
+            'e.id = :exerciseId AND f.id = :fieldId',
+            ['exerciseId' => $exerciseId, 'fieldId' => $fieldId],
+            'e.id AS exercise_id, e.title, e.status, f.id AS field_id, f.label, f.value_kind, ful.answer AS value, ful.results_id, ful.created_at'
+        );
+        return self::mapExerciseWithFieldAndFulfillments($rows);
+    }
+
     public static function create(array $item): int
     {
         return Database::getInstance()->createItem('exercises', $item);
@@ -71,6 +94,32 @@ class Exercise
                         'value_kind' => $r['value_kind'],
                     ])->values()->all(),
             ];
+    }
+
+    private static function mapExerciseWithFieldAndFulfillments(Collection|array $rows): array
+    {
+        $rows = collect($rows);
+
+        if ($rows->isEmpty()) {
+            return [];
+        }
+
+        $first = $rows->first();
+
+        return [
+            'id'     => $first['exercise_id'],
+            'title'  => $first['title'],
+            'status' => $first['status'],
+            'field_id'  => $first['field_id'],
+            'label'      => $first['label'],
+            'value_kind' => $first['value_kind'],
+            'results_id' => $first['results_id'],
+            'answers'    => $rows->whereNotNull('value')
+                ->map(fn ($r) => [
+                    'value'      => $r['value'],
+                    'created_at' => $r['created_at'] ?? null,
+                ])->values()->all(),
+        ];
     }
 
     /**
