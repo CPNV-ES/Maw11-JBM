@@ -1,5 +1,5 @@
 <?php $title = "Results : ";
-$labelTitle = $results['title']; ?>
+$labelTitle = $results['exercise_id']; ?>
 <div class="container main">
 <table>
   <thead>
@@ -16,7 +16,7 @@ $labelTitle = $results['title']; ?>
   <?php foreach ($results['results'] as $result): ?>
       <tr>
         <td>
-            <a href="/exercises/417/fulfillments/601">
+            <a href="<?= "/exercises/" . $results['id'] . "/fulfillments/" . $result['id']?>">
                 <?=$result['created_at'] ?>
             </a>
         </td>

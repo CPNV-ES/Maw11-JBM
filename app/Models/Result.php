@@ -67,7 +67,7 @@ class Result
         return $rows->isEmpty()
             ? []
             : [
-                'id'     => $rows->first()['exercise_id'],
+                'exercise_id'     => $rows->first()['exercise_id'],
                 'title'  => $rows->first()['title'],
                 'fields' => $rows
                     ->whereNotNull('field_id')
