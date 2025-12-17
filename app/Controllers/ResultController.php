@@ -10,6 +10,12 @@ use function core\view;
 class ResultController
 {
 
+    public function index(array $params): false|string {
+        $exerciseId = filter_var($params['id']);
+        return view('results/index.php', [
+            'results' => Result::getResultByExerciseId($exerciseId)]);
+    }
+
     public function create(array $params): false|string
     {
         $exerciseId = filter_var($params['id']);
