@@ -17,7 +17,7 @@ class Database
         $this->createTable('exercises', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'title TEXT NOT NULL', 'status TEXT NOT NULL','created_at DATETIME DEFAULT CURRENT_TIMESTAMP']);
         $this->createTable('fields', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'label TEXT NOT NULL', 'value_kind INTEGER NOT NULL', 'exercises_id INTEGER NOT NULL','created_at DATETIME DEFAULT CURRENT_TIMESTAMP', 'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
         $this->createTable('results', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'exercises_id INTEGER NOT NULL','created_at DATETIME DEFAULT CURRENT_TIMESTAMP' ,'FOREIGN KEY("exercises_id") REFERENCES "exercises"("id")']);
-        $this->createTable('fulfillments', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'answer TEXT NOT NULL', 'results_id INTEGER NOT NULL' ,'fields_id INTEGER NOT NULL' ,'created_at DATETIME DEFAULT CURRENT_TIMESTAMP','FOREIGN KEY("results_id") REFERENCES "results"("id")', 'FOREIGN KEY("fields_id") REFERENCES "fields"("id")']);
+        $this->createTable('fulfillments', ['id INTEGER PRIMARY KEY AUTOINCREMENT', 'answer TEXT NOT NULL', 'results_id INTEGER NOT NULL' ,'fields_id INTEGER NOT NULL' ,'created_at DATETIME DEFAULT CURRENT_TIMESTAMP','updated_at DATETIME','FOREIGN KEY("results_id") REFERENCES "results"("id")', 'FOREIGN KEY("fields_id") REFERENCES "fields"("id")']);
     }
 
     public function createTable(string $tableName, array $columns): void
@@ -116,10 +116,10 @@ class Database
     public function fetchAllWithJoins(string $baseTable, array $joins, ?string $where = null, array $params = [], string $columns = '*'): Collection
     {
         $sql = "SELECT {$columns} FROM {$baseTable}";
-
         foreach ($joins as $join) {
             $type = $join['type'] ?? 'INNER';
-            $sql .= " {$type} JOIN {$join['table']} ON {$join['on']}";
+            $and = isset($join['and']) ? "AND $join[and]" : '';
+            $sql .= " {$type} JOIN {$join['table']} ON {$join['on']} {$and}";
         }
 
         if ($where) {

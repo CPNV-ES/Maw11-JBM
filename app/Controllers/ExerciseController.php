@@ -38,7 +38,7 @@ class ExerciseController
             return view('errors/404.php', ['message' => 'Exercise not found']);
         }
 
-        return view('exercises/create.php', ['exercise' => Exercise::find($exerciseId)]);
+        return view('exercises/show.php', ['exercise' => Exercise::find($exerciseId)]);
     }
 
     public function indexTaking(): false|string

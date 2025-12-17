@@ -1,7 +1,4 @@
-<?php
-$title      = 'New';
-$labelTitle = $exercises['title'];
-?>
+<?php $title = 'Exercises'; ?>
 <div class="container main">
     <div class="row">
         <section class="column">

@@ -16,6 +16,12 @@ class ResultController
         return view('results/show.php', ['results' => $results]);
     }
 
+    public function index(array $params): false|string {
+        $exerciseId = filter_var($params['id']);
+        return view('results/index.php', [
+            'results' => Result::getResultByExerciseId($exerciseId)]);
+    }
+
     public function create(array $params): false|string
     {
         $exerciseId = filter_var($params['id']);

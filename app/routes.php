@@ -18,6 +18,7 @@ $router->addRoute('POST', '/exercises', [ExerciseController::class, 'store']);
 $router->addRoute('GET', '/exercises/{id}/fulfillments/new', [ResultController::class, 'create']);
 $router->addRoute('GET', '/exercises/{id}', [ExerciseController::class, 'show']);
 $router->addRoute('PATCH', '/exercises/{id}', [ExerciseController::class, 'update']);
+$router->addRoute('GET', '/exercises/{id}/results', [ResultController::class, 'index']);
 $router->addRoute('GET', '/exercises/{exerciseId}/fields/{fieldId}', [FieldController::class, 'edit']);
 $router->addRoute('GET', '/exercises/{exerciseId}/fields', [ExerciseController::class, 'edit']);
 $router->addRoute('PATCH', '/exercises/{exerciseId}/fields/{fieldId}/edit', [FieldController::class, 'update']);

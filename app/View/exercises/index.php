@@ -24,7 +24,7 @@
                             include __DIR__ . '/../../../core/buttons/action.php';
                         } ?>
                         <?php
-                            $icon = 'edit'; 
+                            $icon = 'edit';
                             $href = '/exercises/' . ($value['id'] ?? '') . '/fields';
                             $label = 'Edit';
                             $classes = 'edit';
@@ -70,7 +70,7 @@
                             $method = 'GET';
                             $color = 'primary';
                             $confirm = false;
-                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                            include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
                             $icon = 'close';
@@ -78,9 +78,9 @@
                             $label = 'close';
                             $classes = 'close';
                             $method = 'POST';
-                            $color = 'danger';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
+
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -101,25 +101,22 @@
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
                         <?php
-                        $icon = 'stats';
-                        $href     = '/exercises/' . ($value['id'] ?? '') . '/results';
-                        $label    = 'Show results';
-                        $classes  = 'stats';
-                        $method   = 'GET';
-                        $confirm  = false;
-                        $color = 'primary';
-                        include __DIR__ . '/../../../core/buttons/action.php';
-                        ?>
+                    $icon = 'stats';
+                $href     = '/exercises/' . ($value['id'] ?? '');
+                $label    = 'test';
+                $classes  = '';
+                $method   = '';
+                include __DIR__ . '/../../../core/buttons/action.php';
+                ?>
                         <?php
-                        $icon = 'delete';
-                        $href     = '/exercises/' . ($value['id'] ?? '');
-                        $label    = 'delete';
-                        $classes  = 'delete';
-                        $method   = 'POST';
-                        $confirm  = true;
-                        $color = 'danger';
-                        include __DIR__ . '/../../../core/buttons/action.php';
-                        ?>
+                    $icon = 'delete';
+                $href     = '/exercises/' . ($value['id'] ?? '');
+                $label    = 'delete';
+                $classes  = 'delete';
+                $method   = 'POST';
+                $confirm  = true;
+                include __DIR__ . '/../../../core/buttons/action.php';
+                ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
