@@ -129,3 +129,6 @@ a:focus, a:hover {
 td.result_value {
     text-align: left;
 }
+dt {
+    font-weight: bold;
+}
