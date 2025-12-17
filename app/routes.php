@@ -27,3 +27,4 @@ $router->addRoute('POST', '/exercises/{id}/results', [ResultController::class, '
 $router->addRoute('DELETE', '/exercises/{exerciseId}/fields/{fieldId}', [FieldController::class, 'delete']);
 $router->addRoute('POST', '/exercises/{id}', [ExerciseController::class, 'delete']);
 $router->addRoute('GET', '/exercises/{exerciseId}/results/{fieldId}', [FieldController::class, 'show']);
+$router->addRoute('GET', '/exercises/{exerciseId}/fulfillments/{resultId}', [ResultController::class, 'show']);

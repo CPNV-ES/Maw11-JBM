@@ -136,11 +136,11 @@ class Exercise
             'field_id'  => $first['field_id'],
             'label'      => $first['label'],
             'value_kind' => $first['value_kind'],
-            'results_id' => $first['results_id'],
             'answers'    => $rows->whereNotNull('value')
                 ->map(fn ($r) => [
                     'value'      => $r['value'],
                     'created_at' => $r['created_at'] ?? null,
+                    'results_id' => $r['results_id'],
                 ])->values()->all(),
         ];
     }

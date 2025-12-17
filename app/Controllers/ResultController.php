@@ -9,6 +9,12 @@ use function core\view;
 
 class ResultController
 {
+    public function show(array $params): false|string
+    {
+        $results = Result::findWithExerciseAndFulfillments($params['exerciseId'], $params['resultId']);
+
+        return view('results/show.php', ['results' => $results]);
+    }
 
     public function create(array $params): false|string
     {
