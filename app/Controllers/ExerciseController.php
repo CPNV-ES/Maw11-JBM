@@ -11,7 +11,11 @@ class ExerciseController
 {
     public function index(): false|string
     {
-        return view('exercises/index.php', ['buildings' => Exercise::building(), 'closed' => Exercise::closed(), 'answerings' => Exercise::answering()]);
+        $exercises = Exercise::allWithFields();
+
+        return view('exercises/index.php', [
+            'exercises'  => $exercises
+        ]);
     }
 
     /**
@@ -46,7 +50,7 @@ class ExerciseController
             return 'Exercice introuvable';
         }
 
-        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id), 'allowedKinds' => Field::getAllowedKinds()]);
+        return view('exercises/edit.php', ['exercises' => Exercise::findWithFields($id), 'allowedKinds' => Field::getAllowedKinds()]);
     }
 
     /**

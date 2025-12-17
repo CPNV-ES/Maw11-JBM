@@ -9,25 +9,27 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($buildings ?? []) as $value): ?>
+            <?php foreach (($exercises['building'] ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
-                        <?php
+                        <?php if (!empty($value['fields'])){
                             $icon = 'takeIt';
                             $href = '/exercises/' . ($value['id'] ?? '');
                             $label = 'Be ready for answers';
                             $classes = 'takeIt';
                             $method = 'POST';
+                            $confirm = false;
                             $color = 'primary';
                             include __DIR__ . '/../../../core/buttons/action.php';
-                        ?>
-                        <?php 
+                        } ?>
+                        <?php
                             $icon = 'edit'; 
                             $href = '/exercises/' . ($value['id'] ?? '') . '/fields';
                             $label = 'Edit';
                             $classes = 'edit';
                             $method = 'GET';
+                            $confirm  = false;
                             $color = 'primary';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
@@ -56,7 +58,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($answerings ?? []) as $value): ?>
+            <?php foreach (($exercises['answering'] ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
@@ -94,7 +96,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($closed ?? []) as $value): ?>
+            <?php foreach (($exercises['closed'] ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
