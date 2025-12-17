@@ -63,6 +63,7 @@
                             $label = 'Show results';
                             $classes = 'stats';
                             $method = 'GET';
+                            $confirm = false;
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                         <?php
@@ -94,10 +95,11 @@
                     <td>
                         <?php
                         $icon = 'stats';
-                        $href     = '/exercises/' . ($value['id'] ?? 'results');
+                        $href     = '/exercises/' . ($value['id'] ?? '') . '/results';
                         $label    = 'Show results';
                         $classes  = 'stats';
-                        $method   = 'PUT';
+                        $method   = 'GET';
+                        $confirm  = false;
                         include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
