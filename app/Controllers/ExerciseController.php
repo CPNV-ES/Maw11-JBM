@@ -90,7 +90,6 @@ class ExerciseController
 
     public function update(array $params): false|string
     {
-
         $exerciseId = filter_var($params['id'], FILTER_VALIDATE_INT);
         if ($exerciseId === false) {
             return 'Invalid exercise ID';

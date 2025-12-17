@@ -96,7 +96,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach (($closed ?? []) as $value): ?>
+            <?php foreach (($exercises['closed'] ?? []) as $value): ?>
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
