@@ -13,31 +13,31 @@
                 <tr>
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
+                        <?php
+                            $icon = 'takeIt';
+                            $href = '/exercises/' . ($value['id'] ?? '');
+                            $label = 'Be ready for answers';
+                            $classes = 'takeIt';
+                            $method = 'POST';
+                            include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
                         <?php 
                             $icon = 'edit'; 
                             $href = '/exercises/' . ($value['id'] ?? '');
-                            $label = 'edit';
+                            $label = 'Edit';
                             $classes = 'edit';
                             $method = 'PUT';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
-                            $icon = 'edit';
-                $href             = '/exercises/' . ($value['id'] ?? '');
-                $label            = 'test';
-                $classes          = 'test';
-                $method           = 'POST';
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
-                        <?php
-                    $icon = 'delete';
-                $href     = '/exercises/' . ($value['id'] ?? '');
-                $label    = 'delete';
-                $classes  = 'delete';
-                $method   = 'POST';
-                $confirm  = true;
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
+                            $icon = 'delete';
+                            $href     = '/exercises/' . ($value['id'] ?? '');
+                            $label    = 'delete';
+                            $classes  = 'delete';
+                            $method   = 'POST';
+                            $confirm  = true;
+                            include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
