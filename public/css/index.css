@@ -44,3 +44,7 @@ header.heading {
 .header-new {
     background-color: rgba(224, 164, 88, 1);
 }
+
+.header-results {
+    background-color: rgba(65, 157, 120, 1);
+}
