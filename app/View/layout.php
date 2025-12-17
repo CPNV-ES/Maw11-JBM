@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/home-page.css">
     <link rel="stylesheet" href="/css/buttons-action.css">
+    <link rel="stylesheet" href="/css/result_icons.css">
 </head>
 <body>
 <?php if (!empty($labelTitle)): ?>
