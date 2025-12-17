@@ -111,6 +111,4 @@ class ExerciseController
         header('Location: /exercises');
         exit;
     }
-
-
 }
