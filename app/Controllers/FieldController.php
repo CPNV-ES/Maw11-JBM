@@ -9,6 +9,13 @@ use Maw11Jbm\Models\Field;
 
 class FieldController
 {
+    public function show(array $params): false|string
+    {
+        $exercise = Exercise::findWithFieldAndFulfillments($params['exerciseId'], $params['fieldId']);
+
+        return view('fields/show.php', ['exercise' => $exercise]);
+    }
+
     public function store(): false|string
     {
         if (!empty($_POST['field_label'])) {
