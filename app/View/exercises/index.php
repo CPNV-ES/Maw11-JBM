@@ -19,6 +19,7 @@
                             $label = 'Be ready for answers';
                             $classes = 'takeIt';
                             $method = 'POST';
+                            $color = 'primary';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php 
@@ -27,6 +28,7 @@
                             $label = 'Edit';
                             $classes = 'edit';
                             $method = 'GET';
+                            $color = 'primary';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
@@ -36,6 +38,7 @@
                             $classes  = 'delete';
                             $method   = 'POST';
                             $confirm  = true;
+                            $color = 'danger';
                             include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                     </td>
@@ -63,6 +66,7 @@
                             $label = 'Show results';
                             $classes = 'stats';
                             $method = 'GET';
+                            $color = 'primary';
                             $confirm = false;
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
@@ -72,6 +76,7 @@
                             $label = 'close';
                             $classes = 'close';
                             $method = 'POST';
+                            $color = 'danger';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
                     </td>
@@ -100,6 +105,7 @@
                         $classes  = 'stats';
                         $method   = 'GET';
                         $confirm  = false;
+                        $color = 'primary';
                         include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                         <?php
@@ -109,6 +115,7 @@
                         $classes  = 'delete';
                         $method   = 'POST';
                         $confirm  = true;
+                        $color = 'danger';
                         include __DIR__ . '/../../../core/buttons/action.php';
                         ?>
                     </td>
