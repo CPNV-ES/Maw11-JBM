@@ -58,6 +58,14 @@
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
                         <?php
+                            $icon = 'stats';
+                            $href = '/exercises/' . ($value['id'] ?? 'results');
+                            $label = 'Show results';
+                            $classes = 'stats';
+                            $method = 'PUT';
+                            include __DIR__ . '/../../../core/buttons/action.php'; 
+                        ?>
+                        <?php
                             $icon = 'close';
                             $href = '/exercises/' . ($value['id'] ?? '');
                             $label = 'close';
@@ -65,7 +73,6 @@
                             $method = 'POST';
                             include __DIR__ . '/../../../core/buttons/action.php'; 
                         ?>
-
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -86,22 +93,22 @@
                     <td><?= htmlspecialchars($value['title'] ?? '') ?></td>
                     <td>
                         <?php
-                    $icon = 'stats';
-                $href     = '/exercises/' . ($value['id'] ?? '');
-                $label    = 'test';
-                $classes  = '';
-                $method   = '';
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
+                        $icon = 'stats';
+                        $href     = '/exercises/' . ($value['id'] ?? 'results');
+                        $label    = 'Show results';
+                        $classes  = 'stats';
+                        $method   = 'PUT';
+                        include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
                         <?php
-                    $icon = 'delete';
-                $href     = '/exercises/' . ($value['id'] ?? '');
-                $label    = 'delete';
-                $classes  = 'delete';
-                $method   = 'POST';
-                $confirm  = true;
-                include __DIR__ . '/../../../core/buttons/action.php';
-                ?>
+                        $icon = 'delete';
+                        $href     = '/exercises/' . ($value['id'] ?? '');
+                        $label    = 'delete';
+                        $classes  = 'delete';
+                        $method   = 'POST';
+                        $confirm  = true;
+                        include __DIR__ . '/../../../core/buttons/action.php';
+                        ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
