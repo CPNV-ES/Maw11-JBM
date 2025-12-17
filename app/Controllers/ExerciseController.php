@@ -47,13 +47,13 @@ class ExerciseController
      */
     public function edit(array $params): false|string
     {
-        $id       = (int) $params['exerciseId'];
-        $exercise = Exercise::find($id);
+        $id = (int)$params['exerciseId'];
 
-        if (!$exercise) {
+        try {
+            Exercise::find($id);
+        } catch (Throwable $e) {
             http_response_code(404);
-
-            return 'Exercice introuvable';
+            return view('errors/404.php', ['message' => 'Exercise not found.']);
         }
 
         return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id), 'allowedKinds' => Field::getAllowedKinds()]);
@@ -112,20 +112,5 @@ class ExerciseController
         exit;
     }
 
-    /**
-     * @param array<string, int | string> $params
-     */
-    public function edit(array $params): false|string
-    {
-        $id = (int)$params['exerciseId'];
 
-        try {
-            Exercise::find($id);
-        } catch (Throwable $e) {
-            http_response_code(404);
-            return view('errors/404.php', ['message' => 'Exercise not found.']);
-        }
-
-        return view('exercises/edit.php', ['exercises' => Exercise::allWithFields($id), 'allowedKinds' => Field::getAllowedKinds()]);
-    }
 }
