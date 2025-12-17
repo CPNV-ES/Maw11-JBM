@@ -2,7 +2,7 @@
 <div class="container main">
     <h1>Your take</h1>
     <p>If you'd like to come back later to finish, simply submit it with blanks</p>
-    <form action="<?= '/exercises/' . $exercise['id']. '/results' ?>" accept-charset="UTF-8" method="post">
+    <form action="<?= '/exercises/' . $exercise['id'] . '/results' ?>" accept-charset="UTF-8" method="post">
         <input type="hidden" name="exercises_id" value="<?= $exercise['id'] ?>">
         <?php foreach ($exercise['fields'] as $field): ?>
         <div class="field">

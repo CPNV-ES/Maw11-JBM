@@ -87,6 +87,7 @@ class Exercise
             ['exerciseId' => $exerciseId, 'fieldId' => $fieldId],
             'e.id AS exercise_id, e.title, e.status, f.id AS field_id, f.label, f.value_kind, ful.answer AS value, ful.results_id, ful.created_at'
         );
+
         return self::mapExerciseWithFieldAndFulfillments($rows);
     }
 
@@ -130,10 +131,10 @@ class Exercise
         $first = $rows->first();
 
         return [
-            'id'     => $first['exercise_id'],
-            'title'  => $first['title'],
-            'status' => $first['status'],
-            'field_id'  => $first['field_id'],
+            'id'         => $first['exercise_id'],
+            'title'      => $first['title'],
+            'status'     => $first['status'],
+            'field_id'   => $first['field_id'],
             'label'      => $first['label'],
             'value_kind' => $first['value_kind'],
             'answers'    => $rows->whereNotNull('value')

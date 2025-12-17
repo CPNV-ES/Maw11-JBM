@@ -16,8 +16,11 @@ class Result
     {
         return Database::getInstance()->findById('results', $id);
     }
-    public function index(array $params): false|string {
+
+    public function index(array $params): false|string
+    {
         $exerciseId = filter_var($params['id']);
+
         return view('results/index.php', [
             'results' => Result::getResultByExerciseId($exerciseId)]);
     }
@@ -26,7 +29,6 @@ class Result
     {
         return Database::getInstance()->createItem('results', $item);
     }
-
 
     public static function getResultByExerciseId(int $exerciseId): array
     {
@@ -46,9 +48,9 @@ class Result
                 [
                     'type'  => 'LEFT',
                     'table' => 'fulfillments fu',
-                    'on' => 'fu.fields_id = fi.id',
-                    'and' => 'fu.results_id = r.id'
-                ]
+                    'on'    => 'fu.fields_id = fi.id',
+                    'and'   => 'fu.results_id = r.id',
+                ],
             ],
             'e.id = :id',
             ['id' => $exerciseId],
@@ -64,12 +66,13 @@ class Result
     public static function mapAllResultsOfExrcise(Collection|array $rows): array
     {
         $rows = collect($rows);
+
         return $rows->isEmpty()
             ? []
             : [
                 'exercise_id'     => $rows->first()['exercise_id'],
-                'title'  => $rows->first()['title'],
-                'fields' => $rows
+                'title'           => $rows->first()['title'],
+                'fields'          => $rows
                     ->whereNotNull('field_id')
                     ->unique('field_id')
                     ->map(fn ($r) => [
@@ -77,25 +80,26 @@ class Result
                         'label'      => $r['label'],
                         'value_kind' => $r['value_kind'],
                     ])->values()->all(),
-                'results'=> $rows
+                'results' => $rows
                     ->whereNotNull('results_id')
                     ->unique('results_id')
                     ->map(fn ($res) => [
-                        'id' => $res['results_id'],
-                        'created_at' => $res['created_at'],
+                        'id'           => $res['results_id'],
+                        'created_at'   => $res['created_at'],
                         'fulfillments' => $rows
                             ->whereNotNull('fulfillment_id')
                             ->where('results_id', $res['results_id'])
                             ->unique('fulfillment_id')
                             ->map(fn ($f) => [
-                                'id' => $f['fulfillment_id'],
-                                'answer' => $f['answer'],
-                                'fields_id' => $f['fields_id'],
+                                'id'         => $f['fulfillment_id'],
+                                'answer'     => $f['answer'],
+                                'fields_id'  => $f['fields_id'],
                                 'created_at' => $f['created_at'],
-                            ])
+                            ]),
                     ]),
             ];
     }
+
     public static function allWithFulfillments(int $id): array
     {
         $rows = Database::getInstance()->fetchAllWithJoins(
@@ -111,8 +115,10 @@ class Result
             ['id' => $id],
             'r.id AS result_id, f.id AS fulfillment_id, f.answer,f.fields_id, f.created_at'
         );
+
         return self::mapResultWithFulfillments($rows);
     }
+
     public static function mapResultWithFulfillments(Collection|array $rows): array
     {
         $rows = collect($rows);
@@ -120,13 +126,13 @@ class Result
         return $rows->isEmpty()
             ? []
             : [
-                'id'     => $rows->first()['result_id'],
+                'id'           => $rows->first()['result_id'],
                 'fulfillments' => $rows->whereNotNull('fulfillment_id')
                     ->map(fn ($r) => [
-                        'id'         => $r['fulfillment_id'],
+                        'id'          => $r['fulfillment_id'],
                         'answer'      => $r['answer'],
-                        'created_at' => $r['created_at'],
-                        'fields_id' => $r['fields_id'],
+                        'created_at'  => $r['created_at'],
+                        'fields_id'   => $r['fields_id'],
                     ])->values()->all(),
             ];
     }
@@ -156,6 +162,7 @@ class Result
             ['resultId' => $resultId, 'exerciseId' => $exerciseId],
             'e.title AS exercise_title, r.created_at AS result_date, f.id AS fulfillment_id, f.answer, fi.label AS field_label'
         );
+
         return self::mapResultWithExerciseAndFulfillments($rows);
     }
 

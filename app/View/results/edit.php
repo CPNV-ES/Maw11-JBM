@@ -2,7 +2,7 @@
 <div class="container main">
     <h1>Your take</h1>
     <p>Bookmark this page, it's yours. You'll be able to come back later to finish</p>
-    <form action="<?= '/exercises/' . $exercise['id']. '/fulfillments/' . $result['id']. '/edit' ?>" accept-charset="UTF-8" method="post">
+    <form action="<?= '/exercises/' . $exercise['id'] . '/fulfillments/' . $result['id'] . '/edit' ?>" accept-charset="UTF-8" method="post">
         <input type="hidden" name="exercises_id" value="<?= $exercise['id'] ?>">
         <input type="hidden" name="_method" value="PUT">
         <?php foreach ($exercise['fields'] as $field): ?>
