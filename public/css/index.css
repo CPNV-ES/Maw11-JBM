@@ -1,50 +1,80 @@
-body {
+:root {
+    --bs-purple: #9b4dca;
+    --bs-orange: #e0a458;
+    --bs-green: #419d78;
+    --bs-heading-color: #606c76;
+    --bs-body-color: #606c76;
+}
+body { font-family: 'Roboto', sans-serif; font-weight: 300; }
+a { text-decoration: none; color: var(--bs-purple); }
+a:hover { color: #606c76; }
+
+
+.bg-purple { background-color: var(--bs-purple) !important; }
+.text-purple { color: var(--bs-purple) !important; }
+.btn-purple { background-color: var(--bs-purple); color: white; border-color: var(--bs-purple); }
+.btn-purple:hover { background-color: #8a43b3; color: white; }
+
+
+.header-exercises, .header-results { background-color: var(--bs-green); }
+.header-answering, .header-home { background-color: var(--bs-purple); }
+.header-new { background-color: var(--bs-orange); }
+
+
+body > header.heading { position: fixed; top: 0; width: 100%; z-index: 1030; height: 5rem; display: flex; align-items: center; padding: 0 1rem; }
+body > main { padding-top: 6rem; }
+.homepage-container main { padding-top: 0; }
+
+.bg-custom-light {
+    background-color: #eee !important;
+}
+.table th {
     color: #606c76;
-    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 1.6em;
-    font-weight: 300;
-    letter-spacing: .01em;
-    line-height: 1.6;
-    margin: 0;
 }
-
-.container {
-    margin: 0 auto;
-    max-width: 70rem;
-    padding: 0 2.0rem;
-    width: 100%;
-}
-.main{
-    margin-top: 5rem; /* TODO: To remove later */
-}
-
-header.heading {
-    height: 5rem;
+.main-title {
     color: white;
-    display: flex;
-    align-items: center;
-    gap: clamp(0.3rem, 1vw, 1rem);
-    padding: 0 1rem;
-    left: 0;
-    max-width: 100%;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 100;
+}
+.btn-purple {
+    background-color: var(--bs-purple);
+    color: white;
+}
+.btn-purple:hover {
+    background-color: #606c76;
+    border-color: #606c76;
+    color: #fff;
+    outline: 0;
 }
 
-.header-exercises {
-    background-color: rgba(65, 157, 120, 1);
+.btn-orange {
+    background-color: var(--bs-orange);
+    color: white;
+}
+.btn-orange:hover {
+    background-color: #606c76;
+    border-color: #606c76;
+    color: #fff;
+    outline: 0;
 }
 
-.header-answering {
-    background-color: rgba(155, 77, 202, 1);
-}
-.header-new {
-    background-color: rgba(224, 164, 88, 1);
+.btn-green {
+    background-color: var(--bs-green);
+    color: white;
 }
 
-.header-results {
-    background-color: rgba(65, 157, 120, 1);
+.btn-green:hover {
+    background-color: #606c76;
+    border-color: #606c76;
+    color: #fff;
+    outline: 0;
+}
+
+.exercise-label-link {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.exercise-label-link:hover {
+    color: #606c76;
 }
