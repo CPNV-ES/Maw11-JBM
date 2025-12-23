@@ -2,6 +2,7 @@
 
 namespace Maw11Jbm\Controllers;
 
+use Throwable;
 use function core\view;
 
 use Maw11Jbm\Models\Exercise;
@@ -11,8 +12,20 @@ class FieldController
 {
     public function show(array $params): false|string
     {
-        $exercise = Exercise::findWithFieldAndFulfillments($params['exerciseId'], $params['fieldId']);
+        try {
+           $fieldExist = Field::find($params['fieldId']);
+           $exerciseExist = Exercise::find($params['exerciseId']);
+        } catch (Throwable $e) {
+            http_response_code(404);
+            return view('errors/404.php', ['message' => 'Field not found.']);
+        }
+        try {
+            $exercise = Exercise::findWithFieldAndFulfillments($exerciseExist['id'], $fieldExist['id']);
+        } catch (Throwable $e) {
+            http_response_code(404);
 
+            return view('errors/404.php', ['message' => 'Exercise not found.']);
+        }
         return view('fields/show.php', ['exercise' => $exercise]);
     }
 
@@ -33,9 +46,22 @@ class FieldController
 
     public function edit(array $params): false|string
     {
-        $exercise = Exercise::find($params['exerciseId']);
+        try {
+            $exercise = Exercise::find($params['exerciseId']);
+        } catch (Throwable $e) {
+            http_response_code(404);
 
-        $field = Field::find($params['fieldId']);
+            return view('errors/404.php', ['message' => 'Exercise not found.']);
+        }
+
+        try {
+            $field = Field::find($params['fieldId']);
+        } catch (Throwable $e) {
+            http_response_code(404);
+
+            return view('errors/404.php', ['message' => 'Field not found.']);
+        }
+
 
         return view('fields/edit.php', [
             'exercise'     => $exercise,
