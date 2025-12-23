@@ -1,22 +1,20 @@
-<?php $title = 'Results : ';
-$labelTitle  = $results['exercise_id']; ?>
-<div class="container main">
-<table>
+<?php $title = 'Exercises';
+$labelTitle  = $results['title']; ?>
+<table class="table">
   <thead>
     <tr>
       <th>Take</th>
         <?php foreach ($results['fields'] as $field): ?>
-        <th><a href="<?= '/exercises/' . $results['exercise_id'] . '/results/' . $field['id']?>"><?= htmlspecialchars($field['label']) ?></a></th>
+        <th><a href="<?= htmlspecialchars('/exercises/' . $results['exercise_id'] . '/results/' . $field['id'], ENT_QUOTES, 'UTF-8')?>"><?= htmlspecialchars($field['label']) ?></a></th>
         <?php endforeach; ?>
     </tr>
   </thead>
-
   <tbody>
 
   <?php foreach ($results['results'] as $result): ?>
       <tr>
         <td>
-            <a href="<?= '/exercises/' . $results['id'] . '/fulfillments/' . $result['id']?>">
+            <a href="<?= '/exercises/' . $results['exercise_id'] . '/fulfillments/' . $result['id']?>">
                 <?=$result['created_at'] ?>
             </a>
         </td>
@@ -35,4 +33,3 @@ $labelTitle  = $results['exercise_id']; ?>
     <?php endforeach; ?>
   </tbody>
 </table>
-</div>
