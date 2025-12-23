@@ -53,20 +53,43 @@ How to deploy the application outside the dev environment.
 ├── app                                                                                                                                                                               
 │ ├── Controllers                                                                                                                                                                   
 │ │ ├── ExerciseController.php                                                                                                                                                                                                                                                                                                      
+│ │ ├── FieldController.php                                                                                                                                                                                                                                                                                                      
 │ │ ├── HomeController.php                                                                                                                                                    
+│ │ ├── ResultController.php                                                                                                                                                    
 │ │ └── UserController.php                                                                                                                                                        
 │ ├── Models                                                                                                                                                                        
-│ │ └── Exercise.php                                                                                                                                                              
+│ │ ├── Exercise.php                                                                                                                                                              
+│ │ ├──Field.php                                                                                                                                                              
+│ │ ├── Fulfillment.php                                                                                                                                                              
+│ │ └── Result.php                                                                                                                                                              
 │ ├── routes.php                                                                                                                                                                    
 │ └── View
-│   └── exercises                                                                                                                                                                          
-│   ├── create.php                                                                                                                                                              
-│   ├── index.php                                                                                                                                                             
-│ ├── home.php                                                                                                                                                             
-│ └── user.php
+│   ├── errors                                                                                                                                                                          
+│      ├── 400.php                                                                                                                                                                          
+│      ├── 404.php                                                                                                                                                                          
+│      └── 500.php
+│   ├── exercises                                                                                                                                                                          
+│      ├── create.php                                                                                                                                                                          
+│      ├── edit.php                                                                                                                                                                          
+│      ├── index.php                                                                                                                                                                          
+│      └── index_take.php  
+│   ├── fields                                                                                                                                                                          
+│      ├── edit.php                                                                                                                                                                          
+│      └── show.php   
+│   ├── results                                                                                                                                                                          
+│      ├── create.php                                                                                                                                                                          
+│      ├── edit.php                                                                                                                                                                          
+│      ├── index.php                                                                                                                                                                          
+│      └── show.php                                                                                                                                                                                                                                                                                                                                   
+│   ├── home.php                                                                                                                                                             
+│   └── user.php
 ├── composer.json
 ├── composer.lock
 ├── core
+│ ├── buttons.php
+│    ├── action.php
+│    └── navigation.php
+│ ├── Database.php
 │ ├── Router.php
 │ └── View.php
 ├── LICENSE
@@ -75,9 +98,12 @@ How to deploy the application outside the dev environment.
 │ ├── assets
 │ │ └── logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png
 │ ├── css
+│ │ ├── button-action.css
+│ │ ├── button-navigation.css
 │ │ ├── exercises.css
 │ │ ├── home-page.css
-│ │ └── index.css
+│ │ ├── index.css
+│ │ └── results_icons.css
 │ └── index.php
 └── README.md
 ```
