@@ -14,6 +14,11 @@ App for creating exercises for students
 * IDE tested : PhpStorm and Cursor
 * OS supported : Windows 11 and Fedora 42
 
+### Tech Stack
+* **UI/UX:** Bootstrap 5
+* **Database:** SQLite 3
+* **Logic:** PHP 8.5 & Illuminate Collections
+
 ### Configuration
 
 ```shell
