@@ -8,7 +8,7 @@ App for creating exercises for students
 
 ### Prerequisites
 
-* PHP 8.4
+* PHP 8.5
 * Composer 2.8
 * Xdebug 3.4
 * IDE tested : PhpStorm and Cursor
