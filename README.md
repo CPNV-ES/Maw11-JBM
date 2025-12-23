@@ -8,7 +8,7 @@ App for creating exercises for students
 
 ### Prerequisites
 
-* PHP 8.5
+* PHP 8.5 (extensions required : `pdo_sqlite`, `sqlite3`)
 * Composer 2.8
 * Xdebug 3.4
 * IDE tested : PhpStorm and Cursor
@@ -24,6 +24,10 @@ App for creating exercises for students
 ```shell
     php -S localhost:8000 -t public/
 ```
+
+### Database
+The Sqlite database is located in the `public` folder.
+The file should be created automatically when you run the application as `looper.db`.
 
 ## Deployment
 
