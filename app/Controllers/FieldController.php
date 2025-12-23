@@ -13,25 +13,19 @@ class FieldController
     public function show(array $params): false|string
     {
         try {
-            Exercise::find($params['exerciseId']);
-
+           $fieldExist = Field::find($params['fieldId']);
+           $exerciseExist = Exercise::find($params['exerciseId']);
+        } catch (Throwable $e) {
+            http_response_code(404);
+            return view('errors/404.php', ['message' => 'Field not found.']);
+        }
+        try {
+            $exercise = Exercise::findWithFieldAndFulfillments($exerciseExist['id'], $fieldExist['id']);
         } catch (Throwable $e) {
             http_response_code(404);
 
             return view('errors/404.php', ['message' => 'Exercise not found.']);
         }
-
-        try {
-            Field::find($params['fieldId']);
-
-        } catch (Throwable $e) {
-            http_response_code(404);
-
-            return view('errors/404.php', ['message' => 'Field not found.']);
-        }
-
-        $exercise = Exercise::findWithFieldAndFulfillments($params['exerciseId'], $params['fieldId']);
-
         return view('fields/show.php', ['exercise' => $exercise]);
     }
 
