@@ -1,6 +1,6 @@
 <?php $title = 'New';
 $labelTitle  = $exercises['title']; ?>
-    <div class="row g-4">
+    <div class="row g-4 ">
         <section class="col-12 col-lg-6">
             <h1>Fields</h1>
             <table class="table">
