@@ -8,11 +8,16 @@ App for creating exercises for students
 
 ### Prerequisites
 
-* PHP 8.4
+* PHP 8.5 (extensions required : `pdo_sqlite`, `sqlite3`)
 * Composer 2.8
 * Xdebug 3.4
 * IDE tested : PhpStorm and Cursor
 * OS supported : Windows 11 and Fedora 42
+
+### Tech Stack
+* **UI/UX:** Bootstrap 5
+* **Database:** SQLite 3
+* **Logic:** PHP 8.5 & Illuminate Collections
 
 ### Configuration
 
@@ -20,12 +25,30 @@ App for creating exercises for students
     composer install
 ```
 
+### Running the application
+```shell
+    php -S localhost:8000 -t public/
+```
+
+### Database
+The Sqlite database is located in the `public` folder.
+The file should be created automatically when you run the application as `looper.db`.
+
 ## Deployment
 
 ### On dev environment
 
-How to get dependencies and build?
-How to run the tests?
+To check error with phpstan
+
+```shell
+    composer phpstan
+```
+
+To use the linter php cs fixer
+
+```shell
+    composer php-fix
+```
 
 ### On integration environment
 
@@ -36,17 +59,61 @@ How to deploy the application outside the dev environment.
 * Tip: try the tree bash command
 
 ```shell
-├───Docs
-├───Shopping                                        //classes and packages
-│   ├───bin                                         //the binary to deploy on the end-user environment
-│   │   └───Debug
-│   └───obj
-│       └───Debug                                   
-└───TestShopping                                    //test classes
-    ├───bin
-    │   └───Debug
-    └───obj
-        └───Debug
+├── app                                                                                                                                                                               
+│ ├── Controllers                                                                                                                                                                   
+│ │ ├── ExerciseController.php                                                                                                                                                                                                                                                                                                      
+│ │ ├── FieldController.php                                                                                                                                                                                                                                                                                                      
+│ │ ├── HomeController.php                                                                                                                                                    
+│ │ └── ResultController.php                                                                                                                                                        
+│ ├── Models                                                                                                                                                                        
+│ │ ├── Exercise.php                                                                                                                                                              
+│ │ ├──Field.php                                                                                                                                                              
+│ │ ├── Fulfillment.php                                                                                                                                                              
+│ │ └── Result.php                                                                                                                                                              
+│ ├── routes.php                                                                                                                                                                    
+│ └── View
+│   ├── errors                                                                                                                                                                          
+│      ├── 400.php                                                                                                                                                                          
+│      ├── 404.php                                                                                                                                                                          
+│      └── 500.php
+│   ├── exercises                                                                                                                                                                          
+│      ├── create.php                                                                                                                                                                          
+│      ├── edit.php                                                                                                                                                                          
+│      ├── index.php                                                                                                                                                                          
+│      └── index_take.php  
+│   ├── fields                                                                                                                                                                          
+│      ├── edit.php                                                                                                                                                                          
+│      └── show.php   
+│   ├── results                                                                                                                                                                          
+│      ├── create.php                                                                                                                                                                          
+│      ├── edit.php                                                                                                                                                                          
+│      ├── index.php                                                                                                                                                                          
+│      └── show.php                                                                                                                                                                                                                                                                                                                                   
+│   ├── home.php                                                                                                                                                             
+│   └── user.php
+├── composer.json
+├── composer.lock
+├── core
+│ ├── buttons.php
+│    ├── action.php
+│    └── navigation.php
+│ ├── Database.php
+│ ├── Router.php
+│ └── View.php
+├── LICENSE
+├── phpstan.neon
+├── public
+│ ├── assets
+│ │ └── logo-84d7d70645fbe179ce04c983a5fae1e6cba523d7cd28e0cd49a04707ccbef56e.png
+│ ├── css
+│ │ ├── button-action.css
+│ │ ├── button-navigation.css
+│ │ ├── exercises.css
+│ │ ├── home-page.css
+│ │ ├── index.css
+│ │ └── results_icons.css
+│ └── index.php
+└── README.md
 ```
 
 ## Collaborate

@@ -1,0 +1,39 @@
+
+.homepage-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.header-home {
+    background-color: rgba(155, 77, 202, 1);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+}
