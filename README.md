@@ -64,8 +64,7 @@ How to deploy the application outside the dev environment.
 │ │ ├── ExerciseController.php                                                                                                                                                                                                                                                                                                      
 │ │ ├── FieldController.php                                                                                                                                                                                                                                                                                                      
 │ │ ├── HomeController.php                                                                                                                                                    
-│ │ ├── ResultController.php                                                                                                                                                    
-│ │ └── UserController.php                                                                                                                                                        
+│ │ └── ResultController.php                                                                                                                                                        
 │ ├── Models                                                                                                                                                                        
 │ │ ├── Exercise.php                                                                                                                                                              
 │ │ ├──Field.php                                                                                                                                                              
