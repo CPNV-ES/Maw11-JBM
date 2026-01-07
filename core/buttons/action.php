@@ -13,9 +13,15 @@ $confirmText = $confirmText ?? 'Are you sure?';
 // dynamic css classes
 $colorClass = ($color === 'primary') ? 'text-purple' : "text-{$color}";
 
+$isGetMethod = strtoupper($method) === 'GET';
+
 ?>
-<form method="<?= $method ?>" action="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>" style="display:inline;">
+<?php if ($isGetMethod): ?>
+    <a href="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>"
+<?php else: ?>
+<form method="POST" action="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>" style="display:inline;">
     <button type="submit"
+<?php endif; ?>
             class="btn btn-link p-0 border-0 text-decoration-none <?= $colorClass ?> <?= $hasLabel ? 'btn-context-text' : '' ?> <?= htmlspecialchars($classes, ENT_QUOTES, 'UTF-8') ?>"
             <?= $hasLabel ? 'aria-label="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>
             <?= $hasLabel ? 'data-context-text="' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '"' : '' ?>
@@ -24,7 +30,7 @@ $colorClass = ($color === 'primary') ? 'text-purple' : "text-{$color}";
     >
         <?php if ($icon === 'close'): ?>
             <!-- Close icon -->
-            <input type="hidden" name="_method" value="PATCH"/>
+            <?php if (!$isGetMethod): ?><input type="hidden" name="_method" value="PATCH"/><?php endif; ?>
             <input id="status" value="closed" type="hidden" name="status"/>
             <svg style="width: 1.5rem; height: 1.5rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="size-6">
@@ -57,7 +63,7 @@ $colorClass = ($color === 'primary') ? 'text-purple' : "text-{$color}";
 
         <?php elseif ($icon === 'takeIt'): ?>
             <!-- TakeIt icon -->
-            <input type="hidden" name="_method" value="PATCH"/>
+            <?php if (!$isGetMethod): ?><input type="hidden" name="_method" value="PATCH"/><?php endif; ?>
             <input id="status" value="answering" type="hidden" name="status"/>
             <svg style="width: 1.5rem; height: 1.5rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="size-6">
@@ -66,5 +72,9 @@ $colorClass = ($color === 'primary') ? 'text-purple' : "text-{$color}";
             </svg>
 
         <?php endif; ?>
+<?php if ($isGetMethod): ?>
+    </a>
+<?php else: ?>
     </button>
 </form>
+<?php endif; ?>
